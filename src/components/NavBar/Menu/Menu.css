@@ -1,0 +1,11 @@
+.navlink {
+    color:rgb(225, 225, 225);
+    text-decoration:none;
+    margin:10px;
+    transition:.1s;
+}
+.active {
+    color:white;
+    font-weight: bold;
+    transition:.1s;
+}

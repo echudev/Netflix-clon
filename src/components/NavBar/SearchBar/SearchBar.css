@@ -1,0 +1,33 @@
+.searchBar {
+    margin-left:auto;
+}
+.search-field {
+    padding:3px;
+    margin-right:10px;
+    margin-left: auto;
+    display: flex;
+    width:25px;
+    transition: .3s;
+    overflow: hidden;
+}
+.expand {
+    border: gainsboro solid 1px;
+    width:250px;
+    transition:.3s;
+}
+
+.search-icon {
+    color:rgb(227, 227, 227);
+    cursor:pointer;
+}
+input[type=text] {
+    width:160px;
+    padding-right: 30px;
+    margin-left:5px;
+    border:transparent;
+    color:white;
+    background-color: transparent;
+}
+input[type=text]:focus {
+    outline:none;
+}

@@ -1,0 +1,44 @@
+.explorar {
+    position:relative;
+    display:flex;
+    align-items: center;
+    color:rgb(225, 225, 225);user-select: none;
+    cursor: pointer;
+    height: 100%;
+}
+.tooltip-menu {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+
+    color:rgb(225, 225, 225);
+    background-color:rgba(0, 0, 0, 0.886);
+    border-left:rgb(46, 46, 46) solid 1px;
+    border-right:rgb(46, 46, 46) solid 1px;
+    border-bottom:rgb(46, 46, 46) solid 1px;
+    border-top:rgb(255, 255, 255) solid 3px;
+    
+    position:absolute;
+    top:80px;
+    left:60px;
+
+    opacity: 0;
+    transition:.2s;
+}
+.tooltip-menu::after {
+    content:'';
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    transform:translateX(-50%);
+    width:0;
+    height:0;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-bottom:10px solid rgba(255, 255, 255, 0.886);
+}
+.open {
+    opacity: 1;
+    transition:.2s;
+}

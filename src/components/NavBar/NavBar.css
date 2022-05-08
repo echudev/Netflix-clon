@@ -1,0 +1,18 @@
+.navbar {
+    background-color: #000000;
+    height: 70px;
+    width: 100%;
+    display:flex;
+    align-items: center;
+}
+img {
+    margin:20px;
+}
+ul {
+    padding:0;
+    margin:0;
+    display:flex;
+    align-items:center;
+    list-style: none;
+    user-select: none;
+}

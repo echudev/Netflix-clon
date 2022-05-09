@@ -18,6 +18,7 @@ export const TooltipMenu = () => {
             <div
                 className="explorar"
                 onMouseEnter={() => handlerOpenMenu()}
+                onClick={() => handlerOpenMenu()}
             >
                 <p>Explorar</p>
                 <ArrowDropDownIcon />
@@ -26,11 +27,11 @@ export const TooltipMenu = () => {
                 className={menuClassName}
                 onMouseLeave={() => handlerCloseMenu()}
             >
-                <NavLink to="/" className={({ isActive }) => isActive ? 'navlink active' : 'navlink'}>Inicio</NavLink>
-                <NavLink to="/series" className={({ isActive }) => isActive ? 'navlink active' : 'navlink'}>Series</NavLink>
-                <NavLink to="/peliculas" className={({ isActive }) => isActive ? 'navlink active' : 'navlink'}>Peliculas</NavLink>
-                <p className="navlink">Novedades populares</p>
-                <p className="navlink">Mi lista</p>
+                <NavLink to="/" className={({ isActive }) => isActive ? 'navlink-t active' : 'navlink-t'}>Inicio</NavLink>
+                <NavLink to="/series" className={({ isActive }) => isActive ? 'navlink-t active' : 'navlink-t'}>Series</NavLink>
+                <NavLink to="/peliculas" className={({ isActive }) => isActive ? 'navlink-t active' : 'navlink-t'}>Peliculas</NavLink>
+                <p className="navlink-t">Novedades populares</p>
+                <p className="navlink-t">Mi lista</p>
             </div>
         </>
     )

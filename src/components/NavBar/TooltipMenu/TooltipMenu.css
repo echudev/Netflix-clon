@@ -1,4 +1,5 @@
 .explorar {
+    font-size:1.2vw;
     position:relative;
     display:flex;
     align-items: center;
@@ -13,7 +14,7 @@
     width: 250px;
 
     color:rgb(225, 225, 225);
-    background-color:rgba(0, 0, 0, 0.886);
+    background-color: #121212;
     border-left:rgb(46, 46, 46) solid 1px;
     border-right:rgb(46, 46, 46) solid 1px;
     border-bottom:rgb(46, 46, 46) solid 1px;
@@ -21,7 +22,7 @@
     
     position:absolute;
     top:80px;
-    left:60px;
+    left:40px;
 
     opacity: 0;
     transition:.2s;
@@ -41,4 +42,29 @@
 .open {
     opacity: 1;
     transition:.2s;
+}
+
+.navlink-t {
+    text-align: center;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:10px 0;
+    font-size: 14px;
+    color:rgb(225, 225, 225);
+    text-decoration:none;
+    transition:.1s;
+
+    user-select: none;
+    cursor: pointer;
+}
+.navlink-t:hover {
+    background-color:rgba(255, 255, 255, 0.117);
+    transition:.2s;
+}
+
+.active {
+    color:white;
+    font-weight: bold;
+    transition:.1s;
 }

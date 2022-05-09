@@ -1,14 +1,15 @@
 import React from 'react'
 import './UserIcons.css'
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import profilePic from '../../.././img/profile1.png';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export const UserIcons = () => {
     return (
         <div className="user-icons">
-            <p className="user-icon">Niños</p>
-            <NotificationsIcon className="user-icon" />
-            <AccountCircleIcon className="user-icon" />
+            <NotificationsIcon className="notif-icon" />
+            <img src={profilePic} height="30" className="user-icon"></img>
+            <ArrowDropDownIcon className="arrow-icon"/>
         </div>
     )
 }

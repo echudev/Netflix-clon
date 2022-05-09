@@ -1,12 +1,18 @@
 .navbar {
-    background-color: #000000;
+    position:fixed;
+    background-color: transparent;
     height: 70px;
     width: 100%;
     display:flex;
     align-items: center;
+    transition: .3s;
+}
+.solid {
+    background-color: #121212;
+    transition: .3s;
 }
 img {
-    margin:20px;
+    margin:0 40px;
 }
 ul {
     padding:0;

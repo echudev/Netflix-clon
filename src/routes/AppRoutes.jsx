@@ -14,7 +14,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/series" element={<Series />} />
-        <Route path="/pelis" element={<Pelis />} />
+        <Route path="/peliculas" element={<Pelis />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

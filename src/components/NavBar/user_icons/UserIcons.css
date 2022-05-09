@@ -5,5 +5,14 @@
     margin-right:30px;
 }
 .user-icon {
-    margin:0 5px;
+    margin:0 10px;
+    border-radius:3px;
+}
+.notif-icon {
+    margin:0 10px;
+}
+.arrow-icon {
+    position:relative;
+    margin:0;
+    right:8px;
 }

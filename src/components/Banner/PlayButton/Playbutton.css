@@ -1,0 +1,20 @@
+.play-btn-container {
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    min-height:20px;
+
+    color: black;
+    background-color: white;
+    font-size: 1.4vw;
+    font-weight: bold;
+    padding: 0 2vw 0 0.5vw;
+    margin-top: 1rem;
+}
+.play-btn-container:hover {
+    opacity: 0.8;
+}

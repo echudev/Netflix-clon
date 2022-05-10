@@ -1,0 +1,26 @@
+.info-btn-container {
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:20px;
+
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+    font-size: 1.4vw;
+    font-weight: bold;
+    padding: 0.8vw 1.8vw;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.info-btn-container:hover {
+   opacity: 0.8;
+}
+
+.info-text{
+    min-width:80px;
+}

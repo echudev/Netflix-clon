@@ -1,5 +1,4 @@
 import React from 'react'
-import './UserIcons.css'
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import profilePic from '../../.././img/profile1.png';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';

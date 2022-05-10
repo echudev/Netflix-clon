@@ -1,9 +1,10 @@
 .navlink {
     font-size: 1.2vw;
-    color:rgb(225, 225, 225);
+    color: #e5e5e5;
     text-decoration:none;
     margin:10px;
     transition:.1s;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
 }
 .active {
     color:white;

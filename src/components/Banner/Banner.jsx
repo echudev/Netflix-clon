@@ -2,6 +2,8 @@ import { useGetAxios } from '../../.././src/hooks/useGetAxios';
 import './Banner.css';
 import { InfoButton } from './InfoButton/InfoButton';
 import { PlayButton } from './PlayButton/PlayButton';
+import { generateRandom } from '../../../src/utils/generateRandom';
+import { useRef } from 'react';
 
 
 export const Banner = () => {
@@ -9,9 +11,9 @@ export const Banner = () => {
     const key = '5bb03364720dd995704773221faeb9ba';
     const url = `https://api.themoviedb.org/3/trending/tv/week?api_key=${key}`;
     const [loading, data, error] = useGetAxios(url);
-    
+    const i = useRef(generateRandom(0, 19));
+   
 
-    console.log(data)
 
     if (loading) {
         return <div>Loading...</div>
@@ -28,7 +30,7 @@ export const Banner = () => {
                 position: 'relative',
                 width: '100vw',
                 height: '100vh',
-                backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.results[0].backdrop_path})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.results[i.current].backdrop_path})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
@@ -45,7 +47,7 @@ export const Banner = () => {
             },
             buttons: {
                 position: 'relative',
-                display:'flex',
+                display: 'flex',
                 zIndex: '2',
             }
         }
@@ -53,8 +55,8 @@ export const Banner = () => {
             <div className="banner" style={style.banner} >
                 <div className="banner-content" style={style.content}>
                     <div className="banner-content-text" >
-                        <h1>{data.results[0].name}</h1>
-                        <p>{data.results[0].overview}</p>
+                        <h1>{data.results[i.current].name}</h1>
+                        <p>{data.results[i.current].overview}</p>
                     </div>
                     <div style={style.buttons}>
                         <PlayButton />

@@ -14,14 +14,17 @@ export const SearchBar = () => {
         setExpand(false);
     }
 
- 
+
     return (
         <div className={style.searchBar}>
             <div className={expand ? style.search_field_expand : style.search_field}>
                 <SearchIcon
                     onClick={handlerExpand}
-                    className={style.search_icon}
-                />
+                    style={{
+                        fontSize: '2vw',
+                        color: 'white',
+                        cursor: 'pointer',
+                    }} />
                 <input
                     onBlur={handlerCollapse}
                     ref={searchInput}

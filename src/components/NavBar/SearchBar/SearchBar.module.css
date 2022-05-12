@@ -2,11 +2,10 @@
     margin-left:auto;
 }
 .search_field {
-    padding:3px;
     margin-right:10px;
     margin-left: auto;
     display: flex;
-    width:25px;
+    width:2vw;
     transition: .3s;
     overflow: hidden;
 }
@@ -19,17 +18,11 @@
     overflow: hidden;
 
     border: gainsboro solid 1px;
-    background-color:rgba(0, 0, 0, 0.199);
-    width:250px;
-}
-
-.search_icon {
-    font-size:large;
-    color:rgb(227, 227, 227);
-    cursor:pointer;
+    background-color:rgba(0, 0, 0, 0.737);
+    width:300px;
 }
 .input_text {
-    width:160px;
+    width:100%;
     padding-right: 30px;
     margin-left:5px;
     border:transparent;
@@ -38,4 +31,8 @@
 }
 .input_text:focus {
     outline:none;
+}
+.input_text::placeholder {
+    color:rgba(255, 255, 255, 0.617);
+    font-size: 1rem;
 }

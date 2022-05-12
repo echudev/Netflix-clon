@@ -7,9 +7,20 @@ import style from './UserIcons.module.css';
 export const UserIcons = () => {
     return (
         <div className={style.userIcons}>
-            <NotificationsIcon className={style.notif} />
+            <NotificationsIcon
+                style={{
+                    fontSize: '2.2vw',
+                    margin: '0 10px',
+                    cursor: 'pointer',
+                }} />
             <img src={profilePic} className={style.user}></img>
-            <ArrowDropDownIcon className={style.arrow}/>
+            <ArrowDropDownIcon
+                style={{
+                    position: 'relative',
+                    margin: '0',
+                    right: '8px',
+                    cursor: 'pointer',
+                }} />
         </div>
     )
 }

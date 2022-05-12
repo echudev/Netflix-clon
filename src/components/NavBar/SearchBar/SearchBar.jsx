@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import './SearchBar.css'
+import style from './SearchBar.module.css'
 import SearchIcon from '@mui/icons-material/Search';
 
 export const SearchBar = () => {
@@ -16,11 +16,11 @@ export const SearchBar = () => {
 
  
     return (
-        <div className="searchBar">
-            <div className={expand ? 'search-field expand' : 'search-field'}>
+        <div className={style.searchBar}>
+            <div className={expand ? style.search_field_expand : style.search_field}>
                 <SearchIcon
                     onClick={handlerExpand}
-                    className="search-icon"
+                    className={style.search_icon}
                 />
                 <input
                     onBlur={handlerCollapse}
@@ -28,7 +28,7 @@ export const SearchBar = () => {
                     type="text"
                     placeholder="Titulos, personas, géneros"
                     name="search-input"
-                    className="search-input" />
+                    className={style.input_text} />
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import './Slider.css'
+import style from './Slider.module.css'
 import { useRef, useEffect, useState } from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -20,9 +20,16 @@ export const Slider = (props) => {
 
 
   //estilo de los items del slider (solo width calculado)
-  const styles = {
+  const embStyles = {
     item: {
-      minWidth: itemWidth + 'vw'
+      minWidth: itemWidth + 'vw',
+      backgroundColor: 'rgba(0, 0, 0, 0.54)',
+      color: 'rgb(209, 209, 209)',
+      margin: '0 3px',
+      borderRadius: '5px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     }
   }
 
@@ -63,22 +70,22 @@ export const Slider = (props) => {
 
   return (
     <>
-      <div className="slider-container">
-        <div className='btn-left' onClick={retroceder}>
-          <ChevronLeftIcon className="btn" />
+      <div className={style.slider_container}>
+        <div className={style.btn_left} onClick={retroceder}>
+          <ChevronLeftIcon className={style.btn} />
         </div>
-        <div className="slider" ref={slider}>
+        <div className={style.slider} ref={slider}>
           {items.map((item, index) => {
             return (
-              <div className="item" key={index} style={styles.item}>
-                <div className="item-content">
+              <div style={embStyles.item} key={index}>
+                <div className={style.item_content}>
                   <h2>{item}</h2>
                 </div>
               </div>)
           })}
         </div>
-        <div className='btn-right' onClick={avanzar}>
-          <ChevronRightIcon className="btn" />
+        <div className={style.btn_right} onClick={avanzar}>
+          <ChevronRightIcon className={style.btn} />
         </div>
       </div>
     </>

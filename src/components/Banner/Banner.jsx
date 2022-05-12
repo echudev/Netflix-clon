@@ -1,5 +1,5 @@
 import { useGetAxios } from '../../.././src/hooks/useGetAxios';
-import './Banner.css';
+import style from './Banner.module.css';
 import { InfoButton } from './InfoButton/InfoButton';
 import { PlayButton } from './PlayButton/PlayButton';
 import { generateRandom } from '../../../src/utils/generateRandom';
@@ -12,7 +12,7 @@ export const Banner = () => {
     const url = `https://api.themoviedb.org/3/trending/tv/week?api_key=${key}`;
     const [loading, data, error] = useGetAxios(url);
     const i = useRef(generateRandom(0, 19));
-   
+
 
 
     if (loading) {
@@ -25,7 +25,7 @@ export const Banner = () => {
         return <div>No data...</div>
     }
     if (data) {
-        const style = {
+        const embStyle = {
             banner: {
                 position: 'relative',
                 width: '100vw',
@@ -35,30 +35,21 @@ export const Banner = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 backdropFilter: 'brightness(0.2)',
-            },
-            content: {
-                position: 'absolute',
-                top: '45%',
-                left: '5%',
-                height: 'auto',
-                width: '40%',
-                display: 'flex',
-                flexDirection: 'column',
-            },
-            buttons: {
-                position: 'relative',
-                display: 'flex',
-                zIndex: '2',
             }
         }
+
         return (
-            <div className="banner" style={style.banner} >
-                <div className="banner-content" style={style.content}>
-                    <div className="banner-content-text" >
-                        <h1>{data.results[i.current].name}</h1>
-                        <p>{data.results[i.current].overview}</p>
+            <div style={embStyle.banner} >
+                <div className={style.content}>
+                    <div>
+                        <h1 className={style.banner_content_text_h1}>
+                            {data.results[i.current].name}
+                        </h1>
+                        <p className={style.banner_content_text_p}>
+                            {data.results[i.current].overview}
+                        </p>
                     </div>
-                    <div style={style.buttons}>
+                    <div className={style.buttons}>
                         <PlayButton />
                         <InfoButton />
                     </div>

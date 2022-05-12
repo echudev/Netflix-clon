@@ -1,4 +1,4 @@
-.banner-content-text h1 {
+.banner_content_text_h1 {
     user-select: none;
     margin:0;
     color: #fff;
@@ -8,7 +8,7 @@
     text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
 }
 
-.banner-content-text p {
+.banner_content_text_p {
     user-select: none;
     margin:0;
     color: #fff;
@@ -17,4 +17,18 @@
     width: 100%;
     font-size: 1.2vw;
     text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
+}
+.content {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    height: auto;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.buttons {
+    position: relative;
+    display: flex;
+    z-index: 2;
 }

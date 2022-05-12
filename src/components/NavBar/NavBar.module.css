@@ -3,21 +3,19 @@
     position:fixed;
     background-color: transparent;
     height: 70px;
-    width: 100%;
+    width: 100vw;
     display:flex;
     align-items: center;
     transition: .3s;
 }
-.solid {
-    background-color: #121212;
-    transition: .3s;
-}
-
-ul {
-    padding:0;
-    margin:0;
+.navbar_solid {
+    z-index: 3;
+    position:fixed;
+    height: 70px;
+    width: 100vw;
     display:flex;
-    align-items:center;
-    list-style: none;
-    user-select: none;
+    align-items: center;
+    transition: .3s;
+
+    background-color: #121212;
 }

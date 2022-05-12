@@ -1,13 +1,11 @@
 import InfoIcon from '@mui/icons-material/Info';
-import './InfoButton.css';
+import style from './InfoButton.module.css';
 
 export const InfoButton = () => {
     return(
-        <div className="info-btn-container"  >
-            <InfoIcon  
-            style={ { marginRight:'10px', fontSize:'2vw' } }
-            />
-            <div className="info-text">Más Información</div>
+        <div className={style.info_btn_container}  >
+            <InfoIcon className={style.btn}/>
+            <div className={style.info_text}>Más Información</div>
         </div >
     )
 }

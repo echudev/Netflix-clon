@@ -1,23 +1,10 @@
-import logo from '../../.././img/netflix.png';
+import logo from './netflix.png';
+import style from './Logo.module.css';
 
 export const Logo = () => {
-
-    const logoStyle = {
-        navbarLogo : {
-            width: '8%',
-            minWidth: '50px',
-            height: 'auto',
-            margin:'0 40px'
-        },
-        img: {
-            width: '100%',
-            height: '100%',
-        }
-    }
-
     return (
-        <div style={logoStyle.navbarLogo}>
-            <img src={logo} alt="nav-logo" style={logoStyle.img} />
+        <div className={style.navbar_logo}>
+            <img className={style.img} src={logo} alt="nav-logo"  />
         </div>
     )
 }

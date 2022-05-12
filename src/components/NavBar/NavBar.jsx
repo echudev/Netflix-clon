@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './NavBar.css'
+import style from './NavBar.module.css'
 import { useGetWindowWidth } from './hooks/useGetWindowWidth'
 import { useGetScrollY } from './hooks/useGetScrollY'
 import { SearchBar } from './SearchBar/SearchBar'
@@ -13,7 +13,7 @@ export const NavBar = () => {
   const scrollY = useGetScrollY();
 
   return (
-    <div className={scrollY > 60 ? 'navbar solid' : 'navbar'}>
+    <div className={scrollY > 60 ? style.navbar_solid: style.navbar}>
       <Logo />
       {width > 768 ? <Menu /> : <TooltipMenu />}
       <SearchBar />

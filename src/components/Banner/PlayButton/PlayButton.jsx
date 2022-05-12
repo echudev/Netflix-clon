@@ -1,13 +1,11 @@
-import './PlayButton.css';
+import style from './PlayButton.module.css';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 
 export const PlayButton = () => {
     return(
-        <div className="play-btn-container"  >
-            <PlayArrowIcon  
-            style={ { fontSize: '3vw' } }
-            />
+        <div className={style.play_btn_container}  >
+            <PlayArrowIcon  className={style.play_btn}/>
             <div>Reproducir</div>
         </div >
     )

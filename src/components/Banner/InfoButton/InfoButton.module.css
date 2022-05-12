@@ -1,10 +1,10 @@
-.info-btn-container {
+.info_btn_container {
     position: relative;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height:20px;
+    min-height: 20px;
 
     background-color: rgba(109, 109, 110, 0.7);
     color: white;
@@ -17,10 +17,15 @@
     cursor: pointer;
 }
 
-.info-btn-container:hover {
-   opacity: 0.8;
+.info_btn_container:hover {
+    opacity: 0.8;
 }
 
-.info-text{
-    min-width:80px;
+.info_text {
+    min-width: 80px;
+}
+
+.btn {
+    margin-right: 10px;
+    font-size: 2vw;
 }

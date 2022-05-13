@@ -13,11 +13,12 @@ export const NavBar = () => {
   const scrollY = useGetScrollY();
 
   return (
-    <div className={scrollY > 60 ? style.navbar_solid: style.navbar}>
+    <div className={style.navbar}>
       <Logo />
       {width > 768 ? <Menu /> : <TooltipMenu />}
       <SearchBar />
       <UserIcons />
+      <div className={scrollY > 60 ? style.bkg_solid : style.bkg}></div>
     </div>
   )
 }

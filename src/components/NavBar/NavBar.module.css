@@ -1,7 +1,6 @@
 .navbar {
     z-index: 99;
     position:fixed;
-    background-color: transparent;
     height: 70px;
     width: 100vw;
     display:flex;
@@ -9,16 +8,25 @@
     transition: .3s;
     padding:10px;
 }
-.navbar_solid {
-    z-index: 99;
-    position:fixed;
-    height: 70px;
-    width: 100vw;
-    display:flex;
-    align-items: center;
-    transition: .3s;
-    padding:10px;
-
-    /* background-color: #121212; */
+.bkg {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
     background: linear-gradient(180deg, black 0%, #121212 100%);
+    z-index: -99;
+    opacity:0;
+    transition: .6s;
+}
+.bkg_solid {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background: linear-gradient(180deg, black 0%, #121212 100%);
+    z-index: -99;
+    opacity:1;
+    transition: .3s;
 }

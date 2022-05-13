@@ -1,5 +1,5 @@
 .navlink {
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     color: #e5e5e5;
     text-decoration:none;
     margin:10px;
@@ -7,7 +7,7 @@
     text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
 }
 .navlink_active {
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     text-decoration:none;
     margin:10px;
     transition:.1s;

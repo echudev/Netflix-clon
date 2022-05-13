@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-export const Slider = (props) => {
+export const Slider = ({ titulo = 'titulo', contenido }) => {
 
   //useRef con el slider, para modificar posicion de los children en el DOM
   const slider = useRef(null);
@@ -27,13 +27,11 @@ export const Slider = (props) => {
       color: 'rgb(209, 209, 209)',
       margin: '0 3px',
       borderRadius: '5px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
     }
   }
 
   const avanzar = () => {
+
     slider.current.style.transition = '500ms ease-in-out all';
     const itemsWidth = slider.current.firstChild.offsetWidth;
     slider.current.style.transform = `translateX(-${(itemsWidth * showItems) + margins}px)`;
@@ -71,6 +69,10 @@ export const Slider = (props) => {
   return (
     <>
       <div className={style.slider_container}>
+        <div className={style.slider_header_container}>
+          <p className={style.slider_header_title}>{titulo}</p>
+          <div className={style.slider_header_pagination}>paginación</div>
+        </div>
         <div className={style.btn_left} onClick={retroceder}>
           <ChevronLeftIcon className={style.btn} />
         </div>
@@ -79,7 +81,7 @@ export const Slider = (props) => {
             return (
               <div style={embStyles.item} key={index}>
                 <div className={style.item_content}>
-                  <h2>{item}</h2>
+                  <div>{item}</div>
                 </div>
               </div>)
           })}

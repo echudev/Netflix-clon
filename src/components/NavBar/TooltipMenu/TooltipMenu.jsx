@@ -30,8 +30,8 @@ export const TooltipMenu = () => {
                 <NavLink to="/" className={({ isActive }) => isActive ? style.navlink_active : style.navlink}>Inicio</NavLink>
                 <NavLink to="/series" className={({ isActive }) => isActive ? style.navlink_active : style.navlink}>Series</NavLink>
                 <NavLink to="/peliculas" className={({ isActive }) => isActive ? style.navlink_active : style.navlink}>Peliculas</NavLink>
-                <p className={style.navlink}>Novedades populares</p>
-                <p className={style.navlink}>Mi lista</p>
+                <NavLink to="/novedades" className={({ isActive }) => isActive ? style.navlink_active : style.navlink}>Novedades populares</NavLink>
+                <NavLink to="/milista" className={({ isActive }) => isActive ? style.navlink_active : style.navlink}>Mi lista</NavLink>
             </div>
         </>
     )

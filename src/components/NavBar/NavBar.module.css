@@ -10,7 +10,7 @@
     padding:40px;
 }
 .navbar_solid {
-    z-index: 3;
+    z-index: 99;
     position:fixed;
     height: 70px;
     width: 100vw;

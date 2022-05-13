@@ -28,7 +28,7 @@ export const Banner = () => {
         const embStyle = {
             banner: {
                 position: 'relative',
-                width: '100vw',
+                width: '100%',
                 height: '100vh',
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.results[i.current].backdrop_path})`,
                 backgroundSize: 'cover',

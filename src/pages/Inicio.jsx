@@ -4,7 +4,7 @@ import { Slider } from '../components/Slider/Slider';
 
 export const Inicio = () => {
   const style = {
-    width:'100vw',
+    width:'100%',
     backgroundColor:'#121212',
    }
 

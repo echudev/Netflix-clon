@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Pelis = () => {
+export const MiLista = () => {
 
   const style = {
     width: '100%',
@@ -10,14 +10,13 @@ export const Pelis = () => {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height:'100vh',
-    width:'100vw',
+    height: '100vh',
+    width: '100vw',
   }
 
   return (
     <div style={style}>
-      <h1>page PELICULAS: en construcción</h1>
-      <h2>estamos trabajando para brindarte una mejor experiencia</h2>
+      <h1>estás pidiendo mucho :v</h1>
     </div>
   )
 }

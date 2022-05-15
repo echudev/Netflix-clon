@@ -16,30 +16,35 @@ export const Slider = () => {
   const [data, setData] = useState(apiArray);
   const [btnOpacity, setBtnOpacity] = useState(0);
   const windowWidth = useGetWindowWidth();
-  const [items, setItems] = useState({
+  const sliderTotalWidth= 99; //ancho total en vw(viewport width).Tiene que ser el mismo que el width de slider_container
+  const [sizes, setSizes] = useState({
     amount: 5.5,
-    width: 99 / 5.5,
-    height: (99 / 5.5) / 1.8
+    itemWidth: sliderTotalWidth/ 5.5,
+    itemHeight: (sliderTotalWidth / 5.5) / 1.8,
+    btnWidth: (sliderTotalWidth/ 5.5) * 0.25
   });
 
   useEffect(() => {
     if (windowWidth > 1050) {
-      return setItems({
+      return setSizes({
         amount: 5.5,
-        width: 99 / 5.5,
-        height: (99 / 5.5) / 1.8
+        itemWidth: sliderTotalWidth / 5.5,
+        itemHeight: (sliderTotalWidth / 5.5) / 1.8,
+        btnWidth: (sliderTotalWidth / 5.5) * 0.25
       })
     } else if (windowWidth < 1050 && windowWidth >= 800) {
-      return setItems({
+      return setSizes({
         amount: 4.5,
-        width: 99 / 4.5,
-        height: (99 / 4.5) / 1.8
+        itemWidth: sliderTotalWidth / 4.5,
+        itemHeight: (sliderTotalWidth / 4.5) / 1.8,
+        btnWidth: (sliderTotalWidth / 4.5) * 0.25
       })
     } else if (windowWidth < 800) {
-      return setItems({
+      return setSizes({
         amount: 3.5,
-        width: 99 / 3.5,
-        height: (99 / 3.5) / 1.8
+        itemWidth: sliderTotalWidth / 3.5,
+        itemHeight: (sliderTotalWidth / 3.5) / 1.8,
+        btnWidth: (sliderTotalWidth / 3.5) * 0.25
       })
     }
   }, [windowWidth])
@@ -48,11 +53,11 @@ export const Slider = () => {
     slider: {
       display: 'flex',
       paddingTop: '3em',
-      transform: `translateX(-${items.width * 0.75}vw)`,
+      transform: `translateX(-${sizes.itemWidth * 0.75}vw)`,
     },
     item_box: {
-      minWidth: items.width + 'vw',
-      height: items.height + 'vw',
+      minWidth: sizes.itemWidth + 'vw',
+      height: sizes.itemHeight + 'vw',
       color: 'rgb(209, 209, 209)',
       display: 'flex',
       justifyContent: 'center',
@@ -65,9 +70,9 @@ export const Slider = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: '999',
-      height: items.height + 'vw',
-      width: items.width * 0.25 + 'vw',
+      zIndex: '99',
+      height: sizes.itemHeight + 'vw',
+      width: sizes.btnWidth + 'vw',
       borderRadius: '5px',
       backgroundColor: 'rgba(0, 0, 0, 0.387)',
       cursor: 'pointer',
@@ -82,9 +87,9 @@ export const Slider = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: '999',
-      height: items.height + 'vw',
-      width: items.width * 0.25 + 'vw',
+      zIndex: '99',
+      height: sizes.itemHeight + 'vw',
+      width: sizes.btnWidth + 'vw',
       borderRadius: '5px',
       backgroundColor: 'rgba(0, 0, 0, 0.387)',
       cursor: 'pointer',
@@ -97,12 +102,12 @@ export const Slider = () => {
   const avanzar = () => {
     slider.current.style.transition = 'cubic-bezier(.42,.02,.37,1.06) 1s';
     const itemsWidth = slider.current.firstChild.getBoundingClientRect().width;
-    slider.current.style.transform = `translateX(-${(itemsWidth * items.amount) + (itemsWidth * 0.25)}px)`;
+    slider.current.style.transform = `translateX(-${(itemsWidth * sizes.amount) + (itemsWidth * 0.25)}px)`;
 
     const restore = () => {
       slider.current.style.transition = 'none';
-      slider.current.style.transform = `translateX(-${items.width * 0.75}vw)`;
-      for (let i = 0; i < Math.floor(items.amount); i++) {
+      slider.current.style.transform = `translateX(-${sizes.itemWidth * 0.75}vw)`;
+      for (let i = 0; i < Math.floor(sizes.amount); i++) {
         const firstChild = slider.current.firstChild;
         slider.current.append(firstChild)
       }
@@ -113,18 +118,18 @@ export const Slider = () => {
 
 
   const retroceder = () => {
-    for (let i = 0; i < Math.floor(items.amount); i++) {
+    for (let i = 0; i < Math.floor(sizes.amount); i++) {
       const lastChild = slider.current.lastChild;
       slider.current.prepend(lastChild)
     }
 
     slider.current.style.transition = 'none';
     const itemsWidth = slider.current.firstChild.getBoundingClientRect().width;
-    slider.current.style.transform = `translateX(-${(itemsWidth * items.amount) + (itemsWidth * 0.25)}px)`;
+    slider.current.style.transform = `translateX(-${(itemsWidth * sizes.amount) + (itemsWidth * 0.25)}px)`;
 
     setTimeout(() => {
       slider.current.style.transition = 'cubic-bezier(.42,.02,.37,1.06) 1s';
-      slider.current.style.transform = `translateX(-${items.width * 0.75}vw)`;
+      slider.current.style.transform = `translateX(-${sizes.itemWidth * 0.75}vw)`;
     }, 30);
   }
 

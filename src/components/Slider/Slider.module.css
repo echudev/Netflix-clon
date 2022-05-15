@@ -1,11 +1,10 @@
 .slider_container {
   position:relative;
   width:99vw;
-  bottom: 70px;
-  
   overflow: hidden;
 
-  margin: 0 auto 80px auto;
+  bottom: 70px;
+  left:0;
 
   cursor: pointer;
   user-select: none;

@@ -7,4 +7,9 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  --main-text-color: #fff;
+  --secondary-text-color: #808080;
+  --main-bg-color: #121212;
 }

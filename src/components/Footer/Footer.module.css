@@ -1,0 +1,6 @@
+.footer_body {
+    color: var(--secondary-text-color);
+    background-color: var(--main-bg-color);
+    width: 100%;
+    min-height: 150px
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import style from './NavBar.module.css'
 import { useGetWindowWidth } from './hooks/useGetWindowWidth'
 import { useGetScrollY } from './hooks/useGetScrollY'

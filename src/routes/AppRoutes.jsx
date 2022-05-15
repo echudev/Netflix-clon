@@ -7,6 +7,7 @@ import { Pelis } from "../pages/Pelis";
 import { MiLista } from "../pages/MiLista";
 import { Novedades } from "../pages/Novedades";
 import { NotFound } from "../pages/NotFound";
+import { Footer } from "../components/Footer/Footer";
 
 function AppRoutes() {
 
@@ -21,6 +22,7 @@ function AppRoutes() {
         <Route path="/milista" element={<MiLista />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

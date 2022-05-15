@@ -16,7 +16,7 @@ export const Slider = () => {
   const [data, setData] = useState(apiArray);
   const [btnOpacity, setBtnOpacity] = useState(0);
   const windowWidth = useGetWindowWidth();
-  const sliderTotalWidth= 99; //ancho total en vw(viewport width).Tiene que ser el mismo que el width de slider_container
+  const sliderTotalWidth= 100; //ancho total en vw(viewport width).Tiene que ser el mismo que el width de slider_container
   const [sizes, setSizes] = useState({
     amount: 5.5,
     itemWidth: sliderTotalWidth/ 5.5,
@@ -53,10 +53,10 @@ export const Slider = () => {
     slider: {
       display: 'flex',
       paddingTop: '3em',
-      transform: `translateX(-${sizes.itemWidth * 0.75}vw)`,
+      transform: `translateX(-${sizes.itemWidth * 0.75}%)`,
     },
     item_box: {
-      minWidth: sizes.itemWidth + 'vw',
+      minWidth: sizes.itemWidth + '%',
       height: sizes.itemHeight + 'vw',
       color: 'rgb(209, 209, 209)',
       display: 'flex',
@@ -72,7 +72,7 @@ export const Slider = () => {
       alignItems: 'center',
       zIndex: '99',
       height: sizes.itemHeight + 'vw',
-      width: sizes.btnWidth + 'vw',
+      width: sizes.btnWidth + '%',
       borderRadius: '5px',
       backgroundColor: 'rgba(0, 0, 0, 0.387)',
       cursor: 'pointer',
@@ -89,7 +89,7 @@ export const Slider = () => {
       alignItems: 'center',
       zIndex: '99',
       height: sizes.itemHeight + 'vw',
-      width: sizes.btnWidth + 'vw',
+      width: sizes.btnWidth + '%',
       borderRadius: '5px',
       backgroundColor: 'rgba(0, 0, 0, 0.387)',
       cursor: 'pointer',
@@ -104,9 +104,11 @@ export const Slider = () => {
     const itemsWidth = slider.current.firstChild.getBoundingClientRect().width;
     slider.current.style.transform = `translateX(-${(itemsWidth * sizes.amount) + (itemsWidth * 0.25)}px)`;
 
+     console.log(itemsWidth);
+     
     const restore = () => {
       slider.current.style.transition = 'none';
-      slider.current.style.transform = `translateX(-${sizes.itemWidth * 0.75}vw)`;
+      slider.current.style.transform = `translateX(-${sizes.itemWidth * 0.75}%)`;
       for (let i = 0; i < Math.floor(sizes.amount); i++) {
         const firstChild = slider.current.firstChild;
         slider.current.append(firstChild)
@@ -129,7 +131,7 @@ export const Slider = () => {
 
     setTimeout(() => {
       slider.current.style.transition = 'cubic-bezier(.42,.02,.37,1.06) 1s';
-      slider.current.style.transform = `translateX(-${sizes.itemWidth * 0.75}vw)`;
+      slider.current.style.transform = `translateX(-${sizes.itemWidth * 0.75}%)`;
     }, 30);
   }
 

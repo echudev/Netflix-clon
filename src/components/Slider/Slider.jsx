@@ -1,61 +1,69 @@
-import style from './Slider.module.css'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useRef, useState, useEffect } from 'react'
-import { Header } from './Header/Header'
 import { useGetWindowWidth } from './hooks/useGetWindowWidth'
-
-
+import { Header } from './Header/Header'
+import { ButtonLeft } from './ButtonLeft/ButtonLeft';
+import { ButtonRight } from './ButtonRight/ButtonRight';
+import { Scale } from '@mui/icons-material';
 
 
 export const Slider = () => {
   //useRef con el slider, para modificar posicion de los children en el DOM
   const slider = useRef(null);
+  const [showModal, setShowModal] = useState(false);
   const apiArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   //array con listado de peliculas - series
   const [data, setData] = useState(apiArray);
   const [btnOpacity, setBtnOpacity] = useState(0);
   const windowWidth = useGetWindowWidth();
-  const sliderTotalWidth= 100; //ancho total en vw(viewport width).Tiene que ser el mismo que el width de slider_container
   const [sizes, setSizes] = useState({
     amount: 5.5,
-    itemWidth: sliderTotalWidth/ 5.5,
-    itemHeight: (sliderTotalWidth / 5.5) / 1.8,
-    btnWidth: (sliderTotalWidth/ 5.5) * 0.25
+    itemWidth: 100 / 5.5,
+    itemHeight: (100 / 5.5) / 1.8,
+    btnWidth: (100 / 5.5) * 0.25
   });
 
   useEffect(() => {
     if (windowWidth > 1050) {
       return setSizes({
         amount: 5.5,
-        itemWidth: sliderTotalWidth / 5.5,
-        itemHeight: (sliderTotalWidth / 5.5) / 1.8,
-        btnWidth: (sliderTotalWidth / 5.5) * 0.25
+        itemWidth: 100 / 5.5,
+        itemHeight: (100 / 5.5) / 1.8,
+        btnWidth: (100 / 5.5) * 0.25
       })
     } else if (windowWidth < 1050 && windowWidth >= 800) {
       return setSizes({
         amount: 4.5,
-        itemWidth: sliderTotalWidth / 4.5,
-        itemHeight: (sliderTotalWidth / 4.5) / 1.8,
-        btnWidth: (sliderTotalWidth / 4.5) * 0.25
+        itemWidth: 100 / 4.5,
+        itemHeight: (100 / 4.5) / 1.8,
+        btnWidth: (100 / 4.5) * 0.25
       })
     } else if (windowWidth < 800) {
       return setSizes({
         amount: 3.5,
-        itemWidth: sliderTotalWidth / 3.5,
-        itemHeight: (sliderTotalWidth / 3.5) / 1.8,
-        btnWidth: (sliderTotalWidth / 3.5) * 0.25
+        itemWidth: 100 / 3.5,
+        itemHeight: (100 / 3.5) / 1.8,
+        btnWidth: (100 / 3.5) * 0.25
       })
     }
   }, [windowWidth])
 
-  const jsStyle = {  //estilo de los items del slider 
+  const style = {  //estilo de los items del slider 
+    slider_container: {
+      position: 'relative',
+      width: '100%',
+      overflowX: 'hidden',
+      bottom: '70px',
+      left: '0',
+      cursor: 'pointer',
+      userSelect: 'none',
+    },
     slider: {
       display: 'flex',
       paddingTop: '3em',
       transform: `translateX(-${sizes.itemWidth * 0.75}%)`,
     },
     item_box: {
+      position: 'relative',
       minWidth: sizes.itemWidth + '%',
       height: sizes.itemHeight + 'vw',
       color: 'rgb(209, 209, 209)',
@@ -63,39 +71,21 @@ export const Slider = () => {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    btn_left: {
-      position: 'absolute',
-      left: '0',
-      bottom: '0',
+    item_box_content: {
+      width: '98%',
+      height: '98%',
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: '99',
-      height: sizes.itemHeight + 'vw',
-      width: sizes.btnWidth + '%',
-      borderRadius: '5px',
-      backgroundColor: 'rgba(0, 0, 0, 0.387)',
-      cursor: 'pointer',
-      userSelect: 'none',
-      opacity: btnOpacity,
-      transition: ' 0.2s ease-out all',
+      backgroundColor: 'rgb(65, 91, 25)',
     },
-    btn_right: {
+    modal_box: {
+      display: 'none',
       position: 'absolute',
-      right: '0',
-      bottom: '0',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: '99',
-      height: sizes.itemHeight + 'vw',
-      width: sizes.btnWidth + '%',
-      borderRadius: '5px',
-      backgroundColor: 'rgba(0, 0, 0, 0.387)',
-      cursor: 'pointer',
-      userSelect: 'none',
-      opacity: btnOpacity,
-      transition: ' 0.2s ease-out all',
+      width: '100%',
+      height: '100%',
+      border: '1px solid yellow',
     }
   }
 
@@ -104,8 +94,6 @@ export const Slider = () => {
     const itemsWidth = slider.current.firstChild.getBoundingClientRect().width;
     slider.current.style.transform = `translateX(-${(itemsWidth * sizes.amount) + (itemsWidth * 0.25)}px)`;
 
-     console.log(itemsWidth);
-     
     const restore = () => {
       slider.current.style.transition = 'none';
       slider.current.style.transform = `translateX(-${sizes.itemWidth * 0.75}%)`;
@@ -135,37 +123,41 @@ export const Slider = () => {
     }, 30);
   }
 
-
+  const handlerShowModal = (e) => {
+    setShowModal(true);
+  }
+  const handlerHideModal = (e) => {
+    setShowModal(false)
+  }
 
   return (
-    <div className={style.slider_container}>
+    <div style={style.slider_container}>
       <Header />
+      <ButtonLeft
+        sizes={sizes}
+        retroceder={retroceder}
+        btnOpacity={btnOpacity} setBtnOpacity={setBtnOpacity}
+      />
+      <ButtonRight
+        sizes={sizes}
+        avanzar={avanzar}
+        btnOpacity={btnOpacity} setBtnOpacity={setBtnOpacity}
+      />
       <div
-        style={jsStyle.btn_left}
-        onMouseEnter={() => { setBtnOpacity(1) }}
-        onMouseLeave={() => { setBtnOpacity(0) }}
-        onClick={retroceder} >
-        <ChevronLeftIcon className={style.btn} />
-      </div>
-      <div
-        style={jsStyle.btn_right}
-        onMouseEnter={() => { setBtnOpacity(1) }}
-        onMouseLeave={() => { setBtnOpacity(0) }}
-        onClick={avanzar} >
-        <ChevronRightIcon className={style.btn} />
-      </div>
-      <div
-        style={jsStyle.slider}
+        style={style.slider}
         ref={slider}
         onMouseEnter={() => { setBtnOpacity(1) }}
         onMouseLeave={() => { setBtnOpacity(0) }}
       >
         {data.map((item, index) => {
           return (
-            <div style={jsStyle.item_box} key={index}>
-              <div className={style.item_content}>
+            <div style={style.item_box} key={index}
+              onMouseEnter={(e) => handlerShowModal(e)}
+              onMouseLeave={(e) => handlerHideModal(e)}>
+              <div style={style.item_box_content}>
                 <div>{item}</div>
               </div>
+              <div style={style.modal_box} key={index}>un modal</div>
             </div>)
         })}
       </div>

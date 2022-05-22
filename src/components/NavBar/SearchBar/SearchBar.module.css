@@ -1,38 +1,48 @@
 .searchBar {
-    margin-left:auto;
+    margin-left: auto;
 }
+
 .search_field {
-    margin-right:10px;
     margin-left: auto;
     display: flex;
-    width:2vw;
     transition: .3s;
     overflow: hidden;
+
+    width: 2.5vw;
 }
 .search_field_expand {
-    padding:3px;
-    margin-right:10px;
+    padding: 3px;
     margin-left: auto;
     display: flex;
     transition: .3s;
     overflow: hidden;
 
     border: gainsboro solid 1px;
-    background-color:rgba(0, 0, 0, 0.737);
+    background-color: rgba(0, 0, 0, 0.737);
     width: 260px;
 }
+.icon {
+    font-size: 2.3vw !important;
+    color: white;
+    cursor: pointer;
+    margin: auto 0;
+}
+
+
 .input_text {
-    width:100%;
+    width: 100%;
     padding-right: 30px;
-    margin-left:5px;
-    border:transparent;
-    color:white;
+    margin-left: 5px;
+    border: transparent;
+    color: white;
     background-color: transparent;
 }
+
 .input_text:focus {
-    outline:none;
+    outline: none;
 }
+
 .input_text::placeholder {
-    color:rgba(255, 255, 255, 0.617);
+    color: rgba(255, 255, 255, 0.617);
     font-size: 1rem;
 }

@@ -13,13 +13,13 @@ export const ButtonRight = (props) => {
             justifyContent: 'center',
             alignItems: 'center',
             zIndex: '99',
-            height: props.sizes.itemHeight + 'vw',
-            width: props.sizes.btnWidth + '%',
+            height: props.height + 'vw',
+            width: props.width + '%',
             borderRadius: '5px',
             backgroundColor: 'rgba(0, 0, 0, 0.387)',
             cursor: 'pointer',
             userSelect: 'none',
-            opacity: props.btnOpacity,
+            opacity: props.opacity,
             transition: ' 0.2s ease-out all',
         },
         icon: {
@@ -32,11 +32,11 @@ export const ButtonRight = (props) => {
 
     const handlerHoverIn = () => {
         setScale('1.3');
-        props.setBtnOpacity(1);
+        props.setOpacity(1);
     }
     const handlerHoverOut = () => {
         setScale('1');
-        props.setBtnOpacity(0);
+        props.setOpacity(0);
     }
 
     return (

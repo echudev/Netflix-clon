@@ -20,14 +20,10 @@ export const SearchBar = () => {
             <div className={expand ? style.search_field_expand : style.search_field}>
                 <SearchIcon
                     onClick={handlerExpand}
-                    style={{
-                        fontSize: '2vw',
-                        color: 'white',
-                        cursor: 'pointer',
-                    }} />
+                    className={style.icon}/>
                 <input
-                    onBlur={handlerCollapse}
                     ref={searchInput}
+                    onBlur={handlerCollapse}
                     type="text"
                     placeholder="Titulos, personas, géneros"
                     name="search-input"

@@ -3,7 +3,6 @@ import React from 'react';
 export const Novedades = () => {
 
   const style = {
-    width: '100%',
     backgroundColor: '#121212',
     color: '#fff',
     display: 'flex',

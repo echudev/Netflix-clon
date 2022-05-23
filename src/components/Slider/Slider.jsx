@@ -4,7 +4,7 @@ import { ButtonLeft } from './ButtonLeft/ButtonLeft';
 import { ButtonRight } from './ButtonRight/ButtonRight';
 import { Card } from './Card/Card';
 import { useGetSizes } from './hooks/useGetSizes';
-import { SliderStateProvider } from './SliderContext';
+import { SliderStateProvider } from './context/SliderContext';
 
 
 export const Slider = () => {

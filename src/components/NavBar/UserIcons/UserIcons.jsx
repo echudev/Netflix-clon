@@ -9,7 +9,7 @@ export const UserIcons = () => {
         <div className={style.userIcons}>
             <NotificationsIcon
                 style={{
-                    fontSize: '2.2vw',
+                    fontSize: 'x-large',
                     margin: '0 10px',
                     cursor: 'pointer',
                 }} />

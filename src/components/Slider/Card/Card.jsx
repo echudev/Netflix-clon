@@ -1,6 +1,8 @@
-import { useRef, useEffect, useContext } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { useModalHandler } from './hooks/useModalHandler';
-import { SliderContext } from '../SliderContext';
+import { SliderContext } from '../context/SliderContext';
+import { CardButtons } from './CardButtons/CardButtons';
+import { CardTags } from './CardTags/CardTags';
 
 
 
@@ -8,6 +10,14 @@ export const Card = (props) => {
     const card = useRef(null);
     const card_content = useRef(null);
     const { openModal, closeModal } = useModalHandler();
+    const [hoverStyle, setHoverStyle] = useState({
+        card_img_height: '100%',
+        card_info_height: '0%',
+        card_info_display: 'none',
+        borderBottomLeftRadius: '7px',
+        borderBottomRightRadius: '7px',
+        opacity: '0',
+    });
     const { state } = useContext(SliderContext);
     var openTimer;
 
@@ -21,23 +31,40 @@ export const Card = (props) => {
     }, [])
 
 
+
     const handlerShowModal = () => {
         openTimer = setTimeout(() => {
-            console.log('se ejecuta el opentimer')
             openModal(card_content.current);
+            setHoverStyle({
+                card_img_height: '60%',
+                card_info_height: '40%',
+                card_info_display: 'flex',
+                borderBottomLeftRadius: '0px',
+                borderBottomRightRadius: '0px',
+                opacity: '1',
+            });
         }, 500);
     }
 
     const handlerHideModal = () => {
         if (!state.current.open) {
             clearTimeout(openTimer);
-            console.log('se cancela el opentimer')
         } else if (state.current.open) {
             closeModal(card_content.current, card.current);
+            setHoverStyle({
+                card_img_height: '100%',
+                card_info_height: '0%',
+                card_info_display: 'none',
+                borderBottomLeftRadius: '7px',
+                borderBottomRightRadius: '7px',
+                opacity: '0',
+            });
         }
     }
 
-    
+
+
+
     const style = {
         card: {
             position: 'relative',
@@ -49,17 +76,38 @@ export const Card = (props) => {
             alignItems: 'center',
         },
         card_content: {
+            userSelect: 'none',
             position: 'relative',
             cursor: 'pointer',
             width: '98%',
             height: '98%',
-            borderRadius: '5px',
+        },
+        card_img: {
+            border: ' solid yellow 1px',
             display: 'flex',
-            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'rgb(65, 91, 25)',
+            width: '100%',
+            transition: '.25s',
+            borderTopLeftRadius: '7px',
+            borderTopRightRadius: '7px',
+            borderBottomLeftRadius: hoverStyle.borderBottomLeftRadius,
+            borderBottomRightRadius: hoverStyle.borderBottomRightRadius,
+            height: hoverStyle.card_img_height,
+        },
+        card_info: {
+            display: hoverStyle.card_info_display,
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            width: '100%',
+            backgroundColor: '#171717',
+            color: '#fff',
+            borderBottomLeftRadius: '7px',
+            borderBottomRightRadius: '7px',
+            height: hoverStyle.card_info_height,
         }
+
     }
 
 
@@ -68,13 +116,15 @@ export const Card = (props) => {
         <div
             ref={card}
             style={style.card}
-            key={props.data}
-        >
+            key={props.data}>
             <div
                 ref={card_content}
-                style={style.card_content}
-            >
-                <div>{props.data}</div>
+                style={style.card_content}>
+                <div style={style.card_img}>{props.data}</div>
+                <div style={style.card_info}>
+                    <CardButtons />
+                    <CardTags />
+                </div>
             </div>
         </div >
     )

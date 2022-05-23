@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SliderContext } from "../../SliderContext";
+import { SliderContext } from "../../context/SliderContext";
 
 export const useModalHandler = () => {
 
@@ -36,9 +36,9 @@ export const useModalHandler = () => {
                 }, 100);
 
                 const transitionOpen = () => {
-                    state.current = { ...state.current, open: true, transition: false }
                     element.style.transition = 'none';
                     element.removeEventListener('transitionend', transitionOpen);
+                    state.current = { ...state.current, open: true, transition: false }
                 }
                 element.addEventListener('transitionend', transitionOpen);
             }

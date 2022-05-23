@@ -1,0 +1,117 @@
+.container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+}
+
+.button {
+    position: relative;
+}
+.keydownbtn {
+    margin-left: auto;
+}
+
+.tooltip1 {
+    display:none;
+    white-space: nowrap;
+    font-weight: bold;
+    position: absolute;
+    bottom: 120%;
+    right:-135%;
+    color: #171717;
+    border-radius: 5px;
+    padding: 3px 15px 3px 15px;
+    background-color: #fff;
+}
+.tooltip2 {
+    display:none;
+    white-space: nowrap;
+    font-weight: bold;
+    position: absolute;
+    bottom: 120%;
+    right:-65%;
+    color: #171717;
+    border-radius: 5px;
+    padding: 3px 15px 3px 15px;
+    background-color: #fff;
+}
+.tooltip3 {
+    display:none;
+    white-space: nowrap;
+    font-weight: bold;
+    position: absolute;
+    bottom: 120%;
+    right: -130%;
+    color: #171717;
+    border-radius: 5px;
+    padding: 3px 15px 3px 15px;
+    background-color: #fff;
+}
+.tooltip1::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+.tooltip2::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+.tooltip3::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 40%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+
+.icons {
+    z-index: 99;
+    margin: 5px;
+    font-size: xx-large !important;
+    color: #fff;
+    background-color: #1c1c1c;
+    border: solid rgb(170, 170, 170) 2px;
+    border-radius: 50%;
+    padding: 5px;
+}
+.icons:hover {
+    background-color: #292929;
+    border: solid rgb(255, 255, 255) 2px;
+}
+
+.keydown {
+    margin-left: auto;
+}
+.keydown:hover + .tooltip3 {
+    display:block;
+}
+
+.thumb:hover + .tooltip2 {
+    display:block;
+}
+.add:hover + .tooltip1 {
+    display:block;
+}
+
+.play {
+    color: #171717;
+    border: solid #fff 2px;
+    background-color: #fff;
+}

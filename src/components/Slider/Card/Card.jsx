@@ -16,7 +16,6 @@ export const Card = (props) => {
         card_info_display: 'none',
         borderBottomLeftRadius: '7px',
         borderBottomRightRadius: '7px',
-        opacity: '0',
     });
     const { state } = useContext(SliderContext);
     var openTimer;
@@ -41,13 +40,13 @@ export const Card = (props) => {
                 card_info_display: 'flex',
                 borderBottomLeftRadius: '0px',
                 borderBottomRightRadius: '0px',
-                opacity: '1',
             });
         }, 500);
     }
 
     const handlerHideModal = () => {
         if (!state.current.open) {
+            //si el modal está cerrado y el mouse sale del card antes que se abra, cancela la apertura del modal
             clearTimeout(openTimer);
         } else if (state.current.open) {
             closeModal(card_content.current, card.current);
@@ -57,13 +56,9 @@ export const Card = (props) => {
                 card_info_display: 'none',
                 borderBottomLeftRadius: '7px',
                 borderBottomRightRadius: '7px',
-                opacity: '0',
             });
         }
     }
-
-
-
 
     const style = {
         card: {
@@ -81,9 +76,15 @@ export const Card = (props) => {
             cursor: 'pointer',
             width: '98%',
             height: '98%',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
         },
         card_img: {
-            border: ' solid yellow 1px',
+            backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            // backdropFilter: 'brightness(20%)',
+
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -96,6 +97,7 @@ export const Card = (props) => {
             height: hoverStyle.card_img_height,
         },
         card_info: {
+            position: 'relative',
             display: hoverStyle.card_info_display,
             flexDirection: 'column',
             alignItems: 'center',
@@ -103,6 +105,7 @@ export const Card = (props) => {
             width: '100%',
             backgroundColor: '#171717',
             color: '#fff',
+            transition: '.25s',
             borderBottomLeftRadius: '7px',
             borderBottomRightRadius: '7px',
             height: hoverStyle.card_info_height,
@@ -115,12 +118,11 @@ export const Card = (props) => {
     return (
         <div
             ref={card}
-            style={style.card}
-            key={props.data}>
+            style={style.card}>
             <div
                 ref={card_content}
                 style={style.card_content}>
-                <div style={style.card_img}>{props.data}</div>
+                <div style={style.card_img}></div>
                 <div style={style.card_info}>
                     <CardButtons />
                     <CardTags />

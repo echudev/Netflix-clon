@@ -1,4 +1,4 @@
-export const Header = () => {
+export const Header = (props) => {
 
     const style = {
         header_container: {
@@ -10,10 +10,10 @@ export const Header = () => {
             display: 'flex',
         },
         header_title: {
-            fontSize: '1.2rem',
+            fontSize: '1.1em',
             fontWeight: 'bold',
             color: '#e5e5e5',
-            marginLeft: '4vw',
+            marginLeft: '5vw',
         },
         header_pagination: {
             marginLeft: 'auto',
@@ -24,8 +24,8 @@ export const Header = () => {
 
     return (
         <div style={style.header_container} >
-            <p style={style.header_title}>Titulo</p>
-            <div style={style.header_pagination}>paginación</div>
+            <p style={style.header_title}>{props.titulo}</p>
+            <div style={style.header_pagination}></div>
         </div >
     )
 }

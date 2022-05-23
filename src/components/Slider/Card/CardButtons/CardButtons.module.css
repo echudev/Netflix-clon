@@ -113,5 +113,5 @@
 .play {
     color: #171717;
     border: solid #fff 2px;
-    background-color: #fff;
+    background-color: #fff !important;
 }

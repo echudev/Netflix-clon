@@ -33,7 +33,7 @@ export const useModalHandler = () => {
                     element.style.left = (leftDistance - (width / 4)) + 'px';
                     element.style.width = width * 1.5 + 'px';
                     element.style.height = height * 2.5 + 'px';
-                }, 100);
+                }, 10);
 
                 const transitionOpen = () => {
                     element.style.transition = 'none';

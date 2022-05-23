@@ -7,9 +7,9 @@ import { useGetSizes } from './hooks/useGetSizes';
 import { SliderStateProvider } from './context/SliderContext';
 
 
-export const Slider = () => {
-  const apiArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  const [data, setData] = useState(apiArray);  //array con listado de peliculas - series
+export const Slider = (props) => {
+  const fakeArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  const [loadingArray, setLoadingArray] = useState(fakeArray);  //array con listado de peliculas - series
   const slider = useRef(null); //useRef con el slider, para modificar posicion de los children en el DOM
   const [btnOpacity, setBtnOpacity] = useState(0); //muestra oculta botones
   const [amount, itemWidth, itemHeight, btnWidth] = useGetSizes();
@@ -18,15 +18,21 @@ export const Slider = () => {
     slider_container: {
       position: 'relative',
       width: '100%',
-      bottom: '70px',
+      bottom: '80px',
       left: '0',
+      marginBottom: '3vw',
       cursor: 'pointer',
       userSelect: 'none',
       overflow: 'hidden',
+      webkitTransform: 'translateZ(0)',
+      mozTransform: 'translateZ(0)',
+      msTransform: 'translateZ(0)',
+      oTransform: 'translateZ(0)',
+      transform: 'translateZ(0)',
     },
     slider: {
       display: 'flex',
-      paddingTop: '3em',
+      paddingTop: '2.5em',
       transform: `translateX(-${itemWidth * 0.75}%)`,
     }
   }
@@ -35,7 +41,7 @@ export const Slider = () => {
     slider.current.style.transition = 'cubic-bezier(.42,.02,.37,1.06) 1s';
     const itemsWidth = slider.current.firstChild.getBoundingClientRect().width;
     slider.current.style.transform = `translateX(-${(itemsWidth * amount) + (itemsWidth * 0.25)}px)`;
-    
+
     const restore = () => {
       slider.current.style.transition = 'none';
       slider.current.style.transform = `translateX(-${itemWidth * 0.75}%)`;
@@ -68,7 +74,7 @@ export const Slider = () => {
   return (
     <SliderStateProvider>
       <div style={style.slider_container} >
-        <Header />
+        <Header titulo={props.titulo} />
         <ButtonLeft
           height={itemHeight}
           width={btnWidth}
@@ -87,11 +93,19 @@ export const Slider = () => {
           onMouseEnter={() => { setBtnOpacity(1) }}
           onMouseLeave={() => { setBtnOpacity(0) }}
         >
-          {data.map((data, index) => {
-            return (<Card
-              data={data} key={index}
-              width={itemWidth} height={itemHeight} />)
-          })}
+          {props.loading ?
+            loadingArray.map((data, index) => {
+              return (<Card
+                data={data} key={index}
+                width={itemWidth} height={itemHeight} />)
+            })
+            :
+            props.data.results.map((data, i) => {
+              return (<Card
+                data={data} key={data.id}
+                width={itemWidth} height={itemHeight} />)
+            })
+          }
         </div>
       </div>
     </SliderStateProvider>

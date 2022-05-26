@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react'
+import { generateRandom } from '../../utils/random'
 import axios from 'axios';
 
+export const useGetBanner = (url) => {
 
-export const useGetAPI = (type, collection, lang, page) => {
-
+    const i = generateRandom(0, 19);
+    
+    //se crea un estado para guardar la informacion de la api
     const [data, setData] = useState({
         loading: true,
         data: null,
         error: null
     });
-
-    const baseURL = 'https://api.themoviedb.org/3';
-    const key = '5bb03364720dd995704773221faeb9ba';
-    const url = `${baseURL}/${type}/${collection}?api_key=${key}&language=${lang}&page=${page}`;
-
 
     const getData = async (url) => {
         try {
@@ -30,11 +28,11 @@ export const useGetAPI = (type, collection, lang, page) => {
                 data: null,
                 error: error
             });
-            console.log(error);
+            console.log(error)
         }
-    };
+    }
 
-
+    //se ejecuta una sola vez al inicio del componente
     useEffect(() => {
         getData(url);
     }, []);

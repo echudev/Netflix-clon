@@ -6,12 +6,10 @@ import { Card } from './Card/Card';
 import { useGetSizes } from './hooks/useGetSizes';
 import { SliderStateProvider } from './context/SliderContext';
 
-
 export const Slider = (props) => {
-  const fakeArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  const [loadingArray, setLoadingArray] = useState(fakeArray);  //array con listado de peliculas - series
-  const slider = useRef(null); //useRef con el slider, para modificar posicion de los children en el DOM
-  const [btnOpacity, setBtnOpacity] = useState(0); //muestra oculta botones
+  const fakeArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] // 
+  const slider = useRef(null);
+  const [btnOpacity, setBtnOpacity] = useState(0);
   const [amount, itemWidth, itemHeight, btnWidth] = useGetSizes();
 
   const style = {
@@ -24,10 +22,10 @@ export const Slider = (props) => {
       cursor: 'pointer',
       userSelect: 'none',
       overflow: 'hidden',
-      webkitTransform: 'translateZ(0)',
-      mozTransform: 'translateZ(0)',
+      WebkitTransform: 'translateZ(0)',
+      MozTransform: 'translateZ(0)',
       msTransform: 'translateZ(0)',
-      oTransform: 'translateZ(0)',
+      OTransform: 'translateZ(0)',
       transform: 'translateZ(0)',
     },
     slider: {
@@ -93,19 +91,16 @@ export const Slider = (props) => {
           onMouseEnter={() => { setBtnOpacity(1) }}
           onMouseLeave={() => { setBtnOpacity(0) }}
         >
-          {props.loading ?
-            loadingArray.map((data, index) => {
-              return (<Card
-                data={data} key={index}
-                width={itemWidth} height={itemHeight} />)
-            })
-            :
-            props.data.results.map((data, i) => {
-              return (<Card
-                data={data} key={data.id}
-                width={itemWidth} height={itemHeight} />)
-            })
-          }
+          {props.loading && fakeArray.map((data, index) => {
+            return (<Card
+              data={data} key={index}
+              width={itemWidth} height={itemHeight} />)
+          })}
+          {props.data && props.data.results.map((data, i) => {
+            return (<Card
+              data={data} key={data.id}
+              width={itemWidth} height={itemHeight} />)
+          })}
         </div>
       </div>
     </SliderStateProvider>

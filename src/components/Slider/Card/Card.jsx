@@ -12,14 +12,15 @@ export const Card = (props) => {
     const { openModal, closeModal } = useModalHandler();
     const [hoverStyle, setHoverStyle] = useState({
         card_img_height: '100%',
-        card_info_height: '0%',
-        card_info_display: 'none',
+        card_info_scale: 'scale(0)',
         borderBottomLeftRadius: '7px',
         borderBottomRightRadius: '7px',
     });
     const { state } = useContext(SliderContext);
     var openTimer;
 
+
+    //monto los eventlisteners  para el hover del card
     useEffect(() => {
         card_content.current.addEventListener('mouseenter', handlerShowModal);
         card_content.current.addEventListener('mouseleave', handlerHideModal);
@@ -30,30 +31,31 @@ export const Card = (props) => {
     }, [])
 
 
-
+    //funcion para mostrar modal
     const handlerShowModal = () => {
+        card_content.current.removeEventListener('mouseenter', handlerShowModal) //remuevo el eventlistener para que no se repita en firefox (al sacar el div card y ponerlo en el body, firefox vuelve a detectar que el mouse entra al div y genera errores)
         openTimer = setTimeout(() => {
             openModal(card_content.current);
             setHoverStyle({
                 card_img_height: '60%',
-                card_info_height: '40%',
-                card_info_display: 'flex',
+                card_info_scale: 'scale(1)',
                 borderBottomLeftRadius: '0px',
                 borderBottomRightRadius: '0px',
             });
         }, 500);
     }
 
+    //funcion para ocultar modal
     const handlerHideModal = () => {
+        card_content.current.addEventListener('mouseenter', handlerShowModal); //vuelvo a cargar el eventlistener
         if (!state.current.open) {
-            //si el modal está cerrado y el mouse sale del card antes que se abra, cancela la apertura del modal
+            //si el modal está cerrado y el mouse entra y sale del card antes que se abra, cancela la apertura del modal
             clearTimeout(openTimer);
         } else if (state.current.open) {
             closeModal(card_content.current, card.current);
             setHoverStyle({
                 card_img_height: '100%',
-                card_info_height: '0%',
-                card_info_display: 'none',
+                card_info_scale: 'scale(0)',
                 borderBottomLeftRadius: '7px',
                 borderBottomRightRadius: '7px',
             });
@@ -79,17 +81,17 @@ export const Card = (props) => {
             boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
         },
         card_img: {
+            backgroundColor: '#171717',
             backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            // backdropFilter: 'brightness(20%)',
 
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             width: '100%',
-            transition: '.25s',
+            transition: '.15s',
             borderTopLeftRadius: '7px',
             borderTopRightRadius: '7px',
             borderBottomLeftRadius: hoverStyle.borderBottomLeftRadius,
@@ -97,18 +99,18 @@ export const Card = (props) => {
             height: hoverStyle.card_img_height,
         },
         card_info: {
+            transform: hoverStyle.card_info_scale,
             position: 'relative',
-            display: hoverStyle.card_info_display,
+            top: '0',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-around',
             width: '100%',
             backgroundColor: '#171717',
             color: '#fff',
-            transition: '.25s',
             borderBottomLeftRadius: '7px',
             borderBottomRightRadius: '7px',
-            height: hoverStyle.card_info_height,
+            height: '40%',
         }
 
     }

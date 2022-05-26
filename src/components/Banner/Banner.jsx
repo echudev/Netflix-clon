@@ -16,7 +16,7 @@ export const Banner = (props) => {
     return (<>
         {props.loading && <div className={style.banner}></div>}
         {props.data &&
-            <div className={style.banner} style={{ backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 0%) 30%, 70%,rgb(0 0 0 / 80%) 90%), url(https://image.tmdb.org/t/p/original/${props.data.results[i].backdrop_path})` }}>
+            <div className={style.banner} style={{ backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 25%) 30%, 70%,rgb(0 0 0 / 70%) 90%), url(https://image.tmdb.org/t/p/original/${props.data.results[i].backdrop_path})` }}>
                 <div className={style.content}>
                     <div>
                         <h1 className={style.banner_content_text_h1}>

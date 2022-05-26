@@ -13,7 +13,6 @@ export const useModalHandler = () => {
         state.current.hover = !state.current.hover;
         if (state.current.hover) {
             if (!state.current.open && !state.current.transition) {
-
                 state.current = { ...state.current, open: true, transition: true }
 
                 //tomo las medidas estáticas del div (card_content) antes de modificarlo

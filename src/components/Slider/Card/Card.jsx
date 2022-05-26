@@ -86,12 +86,12 @@ export const Card = (props) => {
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
+            transition: '.2s',
 
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             width: '100%',
-            transition: '.15s',
             borderTopLeftRadius: '7px',
             borderTopRightRadius: '7px',
             borderBottomLeftRadius: hoverStyle.borderBottomLeftRadius,

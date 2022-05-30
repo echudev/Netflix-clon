@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export const Series = () => {
 
@@ -10,13 +10,16 @@ export const Series = () => {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
-    width: '100vw',
+    width: '100%',
   }
+
+  useEffect(() =>{
+    document.title= `Series — Netflix`;
+ }, [])  
 
   return (
     <div style={style}>
-      <h1>page SERIES: en construcción</h1>
-      <h2>estamos trabajando para brindarte una mejor experiencia</h2>
+      <h1>SERIES: en construcción</h1>
     </div>
   )
 }

@@ -1,0 +1,17 @@
+.slider_container {
+    position: relative;
+    width: 100%;
+    bottom: 80px;
+    left: 0;
+    margin-bottom: 3vw;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+
+    transform: translateZ(0);
+}
+
+.slider {
+    display: flex;
+    padding-top: 2.5em;
+}

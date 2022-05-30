@@ -16,7 +16,7 @@ function AppRoutes() {
     <NavBar />
       <Routes>
         <Route path="/" element={<Inicio />} />
-        <Route path="/series" element={<Series />} />
+        <Route path="/series" element={<Series />} title={'series'} />
         <Route path="/peliculas" element={<Pelis />} />
         <Route path="/novedades" element={<Novedades />} />
         <Route path="/milista" element={<MiLista />} />

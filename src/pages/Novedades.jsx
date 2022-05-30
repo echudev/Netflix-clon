@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export const Novedades = () => {
 
@@ -10,8 +10,12 @@ export const Novedades = () => {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
-    width: '100vw',
+    width: '100%',
   }
+
+  useEffect(() =>{
+    document.title= `Netflix`;
+ }, []) 
 
   return (
     <div style={style}>

@@ -1,4 +1,5 @@
 .banner {
+    display:flex;
     position: relative;
     width: 100%;
     height: 100vh;
@@ -7,15 +8,49 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+/* .video_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.video_filter {
+    user-select: none;
+    cursor:pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgb(0 0 0 / 80%) 0%, rgb(0 0 0 / 35%) 10%, 70%,rgb(0 0 0 / 80%) 90%) ;
+    opacity: 0.5;
+    z-index: 1;
+}
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */
 
 .content {
-    position: absolute;
-    top: 35%;
-    left: 4vw;
+    z-index: 1;
+    align-self: flex-end;
+    margin-left: 5.3vw;
+    margin-bottom: 140px;
     height: auto;
-    width: 40%;
+    width: 35%;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
+}
+
+.logo {
+    max-height:230px;
+    width: auto;
+    margin-bottom:10px;
+    margin: 0 auto;
 }
 
 .banner_content_text_h1 {
@@ -31,12 +66,12 @@
 .banner_content_text_p {
     user-select: none;
     margin: 0;
-    color: #fff;
+    color: white;
     font-weight: 400;
     line-height: normal;
     width: 100%;
     font-size: 1.2vw;
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
 }
 
 .buttons {

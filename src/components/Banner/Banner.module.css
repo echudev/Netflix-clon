@@ -8,6 +8,35 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.banner_loading {
+    display:flex;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #222222;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    animation-name: banner_loading;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes banner_loading {
+    0% {
+        background-color: #222222;
+    }
+    50% {
+        background-color: #171717;
+    }
+    100% {
+        background-color: #222222;
+    }
+}
+
 /* .video_container {
     position: absolute;
     top: 0;

@@ -5,7 +5,7 @@ import { PlayButton } from './PlayButton/PlayButton';
 export const Banner = (props) => {
  
     return (<>
-        {props.loading && <div className={style.banner}></div>}
+        {props.loading && <div className={style.banner_loading}></div>}
         {props.data &&
             <div
                 className={style.banner}

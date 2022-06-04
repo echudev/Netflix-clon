@@ -4,7 +4,6 @@ import { ButtonLeft } from './ButtonLeft/ButtonLeft';
 import { ButtonRight } from './ButtonRight/ButtonRight';
 import { Card } from './Card/Card';
 import { useGetSliderConfig } from './hooks/useGetSliderConfig.js';
-import { SliderStateProvider } from './context/SliderContext';
 import style from './Slider.module.css';
 
 export const Slider = (props) => {
@@ -47,7 +46,6 @@ export const Slider = (props) => {
 
 
   return (
-    <SliderStateProvider>
       <div className={style.slider_container} >
         <Header titulo={props.titulo} />
         <ButtonLeft
@@ -81,6 +79,5 @@ export const Slider = (props) => {
           })}
         </div>
       </div>
-    </SliderStateProvider>
   )
 }

@@ -16,7 +16,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.card_img {
+.card_content_img {
     background-color: #171717;
     background-size: contain;
     background-repeat: no-repeat;
@@ -24,12 +24,13 @@
     transition: .2s;
 
     display: flex;
+    height:100%;
     width: 100%;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
 }
 
-.card_info {
+.card_content_info {
     position: relative;
     top: 0;
     flex-direction: column;
@@ -41,6 +42,7 @@
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
     height: 40%;
+    transform: scale(0);
 }
 .card_info_header {
     display: flex;

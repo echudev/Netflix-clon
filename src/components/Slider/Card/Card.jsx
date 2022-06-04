@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useModalHandler } from './hooks/useModalHandler';
-import { SliderContext } from '../context/SliderContext';
 import { CardButtons } from './CardButtons/CardButtons';
 import axios from 'axios';
 import style from './Card.module.css';
@@ -10,20 +9,17 @@ import style from './Card.module.css';
 export const Card = (props) => {
     const card = useRef(null);
     const card_content = useRef(null);
+    const modalState = useRef({
+        open: false,
+        transition: false,
+        hover: false,
+    });
+    const { openModal, closeModal } = useModalHandler(modalState);
     const [cardInfo, setCardInfo] = useState({
         loading: true,
         data: null,
     });
-    const { openModal, closeModal } = useModalHandler();
-    const [hoverStyle, setHoverStyle] = useState({
-        card_img_height: '100%',
-        card_info_scale: 'scale(0)',
-        borderBottomLeftRadius: '7px',
-        borderBottomRightRadius: '7px',
-    });
-    const { state } = useContext(SliderContext);
     var openTimer;
-
 
     //monto los eventlisteners para el hover del card
     useEffect(() => {
@@ -36,6 +32,7 @@ export const Card = (props) => {
     }, [cardInfo.data])
 
 
+    //pide informacion extra a la API al hacer hover sobre la card
     const getMoreData = async () => {
         const more_data = await axios.get(props.data.more_data_url);
         setCardInfo({
@@ -44,55 +41,52 @@ export const Card = (props) => {
         })
     }
 
-    //funcion para mostrar modal
+    //muestra modal
     const handlerShowModal = () => {
         card_content.current.removeEventListener('mouseenter', handlerShowModal) //remuevo el eventlistener para que no se repita en firefox (al sacar el div card y ponerlo en el body, firefox vuelve a detectar que el mouse entra al div y genera errores)
         openTimer = setTimeout(() => {
             openModal(card_content.current);
-            setHoverStyle({
-                card_img_height: '60%',
-                card_info_scale: 'scale(1)',
-                borderBottomLeftRadius: '0px',
-                borderBottomRightRadius: '0px',
-            });
             cardInfo.data ? null : getMoreData();
         }, 500);
     }
 
-    //funcion para ocultar modal
+    //ocultar modal
     const handlerHideModal = () => {
-        card_content.current.addEventListener('mouseenter', handlerShowModal); //vuelvo a cargar el eventlistener
-        if (!state.current.open) {
-            //si el modal está cerrado y el mouse entra y sale del card antes que se abra, cancela la apertura del modal
-            clearTimeout(openTimer);
-        } else if (state.current.open) {
-            closeModal(card_content.current, card.current);
-            setHoverStyle({
-                card_img_height: '100%',
-                card_info_scale: 'scale(0)',
-                borderBottomLeftRadius: '7px',
-                borderBottomRightRadius: '7px',
-            });
-        }
+        card_content.current.addEventListener('mouseenter', handlerShowModal);
+        modalState.current.open ? closeModal(card_content.current, card.current)
+            : clearTimeout(openTimer);
     }
 
 
     return (
-        <div className={style.card}
+        <div
+            className={style.card}
             ref={card}
-            style={{ minWidth: props.width + '%', height: props.height + 'vw' }}>
-            <div className={style.card_content}
-                ref={card_content}>
-                <div className={style.card_img}
-                    style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
-                        borderBottomLeftRadius: hoverStyle.borderBottomLeftRadius,
-                        borderBottomRightRadius: hoverStyle.borderBottomRightRadius,
-                        height: hoverStyle.card_img_height,
-                    }}>
-                </div>
-                <div className={style.card_info}
-                    style={{ transform: hoverStyle.card_info_scale }}>
+            style={{ minWidth: props.width + '%', height: props.height + 'vw' }}
+        >
+            <div
+                className={style.card_content}
+                ref={card_content}
+            >
+                {props.data.backdrop_path ?
+                    <div
+                        id='card_content_img'
+                        className={style.card_content_img}
+                        style={{
+                            backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
+                        }}>
+                    </div>
+                    :
+                    <div
+                        id='card_content_img'
+                        className={style.card_content_img}
+                        style={{display:'grid', placeContent:'center',color:'#fff'}}>
+                            {props.data.name || props.data.title }
+                    </div>}
+                <div
+                    id='card_content_info'
+                    className={style.card_content_info}
+                >
                     <CardButtons />
                     {cardInfo.loading ? null
                         : <>

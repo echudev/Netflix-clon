@@ -13,7 +13,7 @@ export const Banner = (props) => {
                 {/* <div className={style.video_container} >
                     <div className={style.video_filter}></div>
                     <iframe className={style.video}
-                        src="https://www.youtube.com/embed/sahskKAxSCY?&autoplay=1&loop=1&rel=0&showinfo=0&mute=1&controls=0&playlist=sahskKAxSCY"
+                        src="https://www.youtube.com/embed/qehG9dKVDG4?&autoplay=1&loop=1&rel=0&showinfo=0&mute=1&controls=0&playlist=qehG9dKVDG4"
                         frameborder="0"
                         allow="autoplay; loop; modestbranding; clipboard-write; encrypted-media;"
                         allowfullscreen>

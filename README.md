@@ -1,4 +1,4 @@
-# Pokemon Memotest Game
+# Clon Netflix 
 
 ## Table of contents
 
@@ -9,10 +9,11 @@
 
 ## Overview
 
-A pokemon memotest game with data brought from the Pokeapi public api. 
-There are 20 cards, discover in pairs until you have completed them all!
+Clon de la webapp Netflix como desafío del bootcamp "Codo a Codo" fullstack React/Go.
+Los datos los consulto de la API pública "TMDB" (The Movie Database).
+Hosteado en Vercel
 
-[PLAY](https://pokemem.vercel.app/)
+[Ir a la Webapp](https://netflix-clon-seven.vercel.app/){:target="_blank"}
 
 ### Screenshot
 
@@ -20,12 +21,13 @@ There are 20 cards, discover in pairs until you have completed them all!
 
 ### Links
 
-- Live Site URL: https://pokemem.vercel.app/
+- Live Site URL: https://netflix-clon-seven.vercel.app/
 
 ### Built with
 
 - React.js 
+- Axios
 - React Router v6
-- CSS custom properties
-- MUI 
-- API: https://pokeapi.co/
+- CSS Vanilla
+- MUI (íconos)
+- API: https://www.themoviedb.org/

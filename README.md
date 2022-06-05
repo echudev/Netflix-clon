@@ -13,7 +13,7 @@ Clon de la webapp Netflix como desafío del bootcamp "Codo a Codo" fullstack Rea
 Los datos los consulto de la API pública "TMDB" (The Movie Database).
 Hosteado en Vercel
 
-[Ir a la Webapp](https://netflix-clon-seven.vercel.app/){:target="_blank"}
+[Ir a la Webapp](https://netflix-clon-seven.vercel.app/)
 
 ### Screenshot
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useModalHandler = (modalState, setBtnOpacity) => {
+export const useModalHandler = (modalState) => {
     const [cardSize, setCardSize] = useState({
         left: null,
         top: null,
@@ -10,7 +10,6 @@ export const useModalHandler = (modalState, setBtnOpacity) => {
 
 
     const openModal = (element) => {
-        if (modalState.current.hover) {
             if (!modalState.current.open && !modalState.current.transition) {
                 modalState.current = { ...modalState.current, open: true, transition: true }
                 //tomo las medidas estáticas del div (card_content) antes de modificarlo
@@ -54,41 +53,38 @@ export const useModalHandler = (modalState, setBtnOpacity) => {
                 }
                 element.addEventListener('transitionend', transitionOpen);
             }
-        }
     };
 
 
 
     const closeModal = (element, element2) => {
-          if (!modalState.current.hover) {
-            if (modalState.current.open && !modalState.current.stransition) {
-                modalState.current = { ...modalState.current, open: false, transition: true }
+        if (modalState.current.open && !modalState.current.stransition) {
+            modalState.current = { ...modalState.current, open: false, transition: true }
 
-                element.style.transition = '.2s';
-                element.style.left = cardSize.left + 'px';
-                element.style.width = cardSize.width + 'px';
-                element.style.top = cardSize.top  + 'px';
-                element.style.height = cardSize.height  + 'px';
+            element.style.transition = '.2s';
+            element.style.left = cardSize.left + 'px';
+            element.style.width = cardSize.width + 'px';
+            element.style.top = cardSize.top + 'px';
+            element.style.height = cardSize.height + 'px';
 
-                element.querySelector('#card_content_info').style.transform = 'scale(0)';
-                element.querySelector('#card_content_img').style.height = '100%';
-                element.querySelector('#card_content_img').style.borderBottomLeftRadius = '7px';
-                element.querySelector('#card_content_img').style.borderBottomRightRadius = '7px';
+            element.querySelector('#card_content_info').style.transform = 'scale(0)';
+            element.querySelector('#card_content_img').style.height = '100%';
+            element.querySelector('#card_content_img').style.borderBottomLeftRadius = '7px';
+            element.querySelector('#card_content_img').style.borderBottomRightRadius = '7px';
 
-                // cuando termina la animación vuelvo a meter el elemento en el contenedor
-                const transitionClose = () => {
-                    element2.appendChild(element)
-                    modalState.current = { ...modalState.current, open: false, transition: false }
-                    element.style.transition = 'none';
-                    element.style.position = 'relative';
-                    element.style.top = '0';
-                    element.style.left = '0'
-                    element.style.width = '98%';
-                    element.style.height = '98%';
-                    element.removeEventListener('transitionend', transitionClose);
-                }
-                element.addEventListener('transitionend', transitionClose);
+            // cuando termina la animación vuelvo a meter el elemento en el contenedor
+            const transitionClose = () => {
+                element2.appendChild(element)
+                element.style.transition = 'none';
+                element.style.position = 'relative';
+                element.style.top = '0';
+                element.style.left = '0'
+                element.style.width = '98%';
+                element.style.height = '98%';
+                element.removeEventListener('transitionend', transitionClose);
+                modalState.current = { ...modalState.current, open: false, transition: false }
             }
+            element.addEventListener('transitionend', transitionClose);
         }
     }
 

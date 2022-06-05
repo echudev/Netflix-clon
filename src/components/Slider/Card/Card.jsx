@@ -46,17 +46,17 @@ export const Card = (props) => {
         props.setBtnOpacity(1);
         setTimeout(() => {
             if (modalState.current.hover) {
-                openModal(card_content.current);
-                cardInfo.data ? null : getMoreData();
-                props.setBtnOpacity(0);
+                openModal(card_content.current); //abro modal
+                cardInfo.data ? null : getMoreData(); //si no hay datos, los pido
+                props.setBtnOpacity(0); //oculto botones slider
             }
-        }, 500);
+        }, 500);//tiempo que debe permanecer mouse sobre card para que abra el modal
     }
 
     //ocultar modal
     const handlerHideModal = () => {
-        modalState.current.hover = false;
         closeModal(card_content.current, card.current)
+        modalState.current.hover = false;
     }
 
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useModalHandler = (modalState) => {
+export const useModalHandler = (modalState, setBtnOpacity) => {
     const [cardSize, setCardSize] = useState({
         left: null,
         top: null,
@@ -10,7 +10,6 @@ export const useModalHandler = (modalState) => {
 
 
     const openModal = (element) => {
-        modalState.current.hover = !modalState.current.hover;
         if (modalState.current.hover) {
             if (!modalState.current.open && !modalState.current.transition) {
                 modalState.current = { ...modalState.current, open: true, transition: true }
@@ -31,7 +30,7 @@ export const useModalHandler = (modalState) => {
                 document.body.appendChild(element); //lo saco del CardContainer y lon meto en el body
                 element.style.top = topDistance + 'px'; //le agrego distancia top que tenía cuando estaba en la card
                 element.style.left = leftDistance + 'px';  //le agrego la misma distancia left que tenía cuando estaba en la card
-                element.style.transition = '.2s'; //le agrego una transición
+                element.style.transition = '.3s'; //le agrego una transición
 
                 setTimeout(() => { //pongo setTimeOut para asegurarme que primero aplique el css y luego el css de la transición
                     if ((leftDistance - (width * 1.5 - width)) < width / 4) {
@@ -43,9 +42,8 @@ export const useModalHandler = (modalState) => {
                     }
                     element.style.width = width * 1.5 + 'px';
                     element.style.top = (topDistance - height) + 'px';
-                    element.style.height = height * 2.5 + 'px';
+                    element.style.height = height * 1.5 + 'px';
                     element.querySelector('#card_content_info').style.transform = 'scale(1)';
-                    element.querySelector('#card_content_img').style.height = '60%';
                     element.querySelector('#card_content_img').style.borderBottomLeftRadius = '0px';
                     element.querySelector('#card_content_img').style.borderBottomRightRadius = '0px';
                 }, 1);
@@ -62,9 +60,7 @@ export const useModalHandler = (modalState) => {
 
 
     const closeModal = (element, element2) => {
-        modalState.current.hover = !modalState.current.hover;
-
-        if (!modalState.current.hover) {
+          if (!modalState.current.hover) {
             if (modalState.current.open && !modalState.current.stransition) {
                 modalState.current = { ...modalState.current, open: false, transition: true }
 

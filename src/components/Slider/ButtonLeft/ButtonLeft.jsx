@@ -9,10 +9,10 @@ export const ButtonLeft = (props) => {
             position: 'absolute',
             left: '0',
             bottom: '0',
-            display: 'flex',
+            display: props.firstSlide? 'none' : 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            zIndex: '99',
+            zIndex: '999',
             height: props.height + 'vw',
             width: props.width + '%',
             borderRadius: '5px',
@@ -20,7 +20,6 @@ export const ButtonLeft = (props) => {
             cursor: 'pointer',
             userSelect: 'none',
             opacity: props.opacity,
-            transition: ' 0.2s ease-out all',
         },
         icon: {
             color: 'white',
@@ -39,7 +38,7 @@ export const ButtonLeft = (props) => {
         props.setOpacity(0);
     }
 
-    return (
+    return (<>
         <div
             style={style.btn_left}
             onMouseEnter={handlerHoverIn}
@@ -47,5 +46,5 @@ export const ButtonLeft = (props) => {
             onClick={props.retroceder} >
             <ChevronLeftIcon style={style.icon} />
         </div>
-    )
+   </>)
 }

@@ -12,7 +12,7 @@ export const ButtonRight = (props) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            zIndex: '99',
+            zIndex: '999',
             height: props.height + 'vw',
             width: props.width + '%',
             borderRadius: '5px',
@@ -20,12 +20,11 @@ export const ButtonRight = (props) => {
             cursor: 'pointer',
             userSelect: 'none',
             opacity: props.opacity,
-            transition: ' 0.2s ease-out all',
         },
         icon: {
             color: 'white',
             fontSize: '6vw',
-            transition:'.15s',
+            transition: '.15s',
             transform: `scale(${scale})`,
         }
     }
@@ -39,7 +38,7 @@ export const ButtonRight = (props) => {
         props.setOpacity(0);
     }
 
-    return (
+    return (<>
         <div
             style={style.btn_right}
             onMouseEnter={handlerHoverIn}
@@ -47,5 +46,5 @@ export const ButtonRight = (props) => {
             onClick={props.avanzar} >
             <ChevronRightIcon style={style.icon} />
         </div>
-    )
+    </>)
 }

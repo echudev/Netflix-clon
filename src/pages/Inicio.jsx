@@ -41,7 +41,7 @@ export const Inicio = () => {
         data={slider2_data}
       />
       <Slider
-        titulo={'Peliculas Populares'}
+        titulo={'Estrenos'}
         data={slider3_data}
       />
       <Slider

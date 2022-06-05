@@ -9,7 +9,7 @@ export const Banner = (props) => {
         {props.data &&
             <div
                 className={style.banner}
-                style={{ backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 / 80%) 0%, rgb(0 0 0 / 35%) 10%, 70%,rgb(0 0 0 / 70%) 90%), url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})` }}>
+                style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,  rgb(0 0 0 / 35%) 10%, rgb(0 0 0 / 35%) 80%,#121212 100%), url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})` }}>
                 {/* <div className={style.video_container} >
                     <div className={style.video_filter}></div>
                     <iframe className={style.video}

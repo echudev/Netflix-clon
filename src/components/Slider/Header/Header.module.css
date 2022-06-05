@@ -1,0 +1,50 @@
+.header_container {
+    position: relative;
+    padding: 6px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+}
+
+.header_title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #e5e5e5;
+    margin-left: 5vw;
+}
+.show_all {
+    position:relative;
+    top: 5px;
+    color:#54b9c5;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left:5px;
+
+    transition: max-width 1s,opacity 1s,transform 750ms;
+    white-space: nowrap;
+    cursor: pointer;
+    /* opacity: 0; */
+     width: 30px;
+}
+.show_all:hover{
+    transform:translateX(100px) scale(1.2);
+}
+.show_all::after {
+    content: "Explorar todos";
+    position: absolute;
+    left:-50px;
+    opacity: 0;
+    transition:1s;
+}
+.show_all:hover::after {
+    opacity: 1;
+    transform:translateX(-30px) scale(0.8);
+}
+
+
+.header_pagination {
+    margin-left: auto;
+    margin-right: 4vw;
+    color: #e5e5e5;
+}

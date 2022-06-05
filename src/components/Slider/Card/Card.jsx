@@ -19,7 +19,6 @@ export const Card = (props) => {
         loading: true,
         data: null,
     });
-    var openTimer;
 
     //monto los eventlisteners para el hover del card
     useEffect(() => {
@@ -43,18 +42,21 @@ export const Card = (props) => {
 
     //muestra modal
     const handlerShowModal = () => {
-        card_content.current.removeEventListener('mouseenter', handlerShowModal) //remuevo el eventlistener para que no se repita en firefox (al sacar el div card y ponerlo en el body, firefox vuelve a detectar que el mouse entra al div y genera errores)
-        openTimer = setTimeout(() => {
-            openModal(card_content.current);
-            cardInfo.data ? null : getMoreData();
+        modalState.current.hover = true;
+        props.setBtnOpacity(1);
+        setTimeout(() => {
+            if (modalState.current.hover) {
+                openModal(card_content.current);
+                cardInfo.data ? null : getMoreData();
+                props.setBtnOpacity(0);
+            }
         }, 500);
     }
 
     //ocultar modal
     const handlerHideModal = () => {
-        card_content.current.addEventListener('mouseenter', handlerShowModal);
-        modalState.current.open ? closeModal(card_content.current, card.current)
-            : clearTimeout(openTimer);
+        modalState.current.hover = false;
+        closeModal(card_content.current, card.current)
     }
 
 
@@ -62,27 +64,24 @@ export const Card = (props) => {
         <div
             className={style.card}
             ref={card}
-            style={{ minWidth: props.width + '%', height: props.height + 'vw' }}
+            style={{
+                minWidth: props.width + '%',
+                height: props.height + 'vw',
+            }}
         >
             <div
                 className={style.card_content}
                 ref={card_content}
+                style={{ display: props.i === 0 ? props.firstSlide ? 'none' : 'block' : 'block', }}
             >
-                {props.data.backdrop_path ?
-                    <div
-                        id='card_content_img'
-                        className={style.card_content_img}
-                        style={{
-                            backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
-                        }}>
-                    </div>
-                    :
-                    <div
-                        id='card_content_img'
-                        className={style.card_content_img}
-                        style={{display:'grid', placeContent:'center',color:'#fff'}}>
-                            {props.data.name || props.data.title }
-                    </div>}
+                <div
+                    id='card_content_img'
+                    className={style.card_content_img}
+                    style={{
+                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
+                    }}>
+                </div>
+
                 <div
                     id='card_content_info'
                     className={style.card_content_info}

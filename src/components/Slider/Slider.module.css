@@ -4,7 +4,6 @@
     bottom: 80px;
     left: 0;
     margin-bottom: 3vw;
-    cursor: pointer;
     user-select: none;
     overflow: hidden;
 
@@ -13,5 +12,4 @@
 
 .slider {
     display: flex;
-    padding-top: 2.5em;
 }

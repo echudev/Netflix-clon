@@ -9,12 +9,9 @@ import style from './Card.module.css';
 export const Card = (props) => {
     const card = useRef(null);
     const card_content = useRef(null);
-    const modalState = useRef({
-        open: false,
-        transition: false,
-        hover: false,
-    });
-    const { openModal, closeModal } = useModalHandler(modalState);
+    const hover = useRef(false);
+    const modalState = useRef('closed');
+    const { openModal, closeModal } = useModalHandler();
     const [cardInfo, setCardInfo] = useState({
         loading: true,
         data: null,
@@ -42,21 +39,25 @@ export const Card = (props) => {
 
     //muestra modal
     const handlerShowModal = () => {
-        modalState.current.hover = true;
+        hover.current = true;
         props.setBtnOpacity(1);
         setTimeout(() => {
-            if (modalState.current.hover) {
+            if (hover.current && modalState.current === 'closed') {
                 openModal(card_content.current); //abro modal
                 cardInfo.data ? null : getMoreData(); //si no hay datos, los pido
                 props.setBtnOpacity(0); //oculto botones slider
+                modalState.current = 'open';
             }
         }, 500);//tiempo que debe permanecer mouse sobre card para que abra el modal
     }
 
     //ocultar modal
     const handlerHideModal = () => {
-        closeModal(card_content.current, card.current)
-        modalState.current.hover = false;
+        hover.current = false;
+        if (!hover.current && modalState.current === 'open') {
+            closeModal(card_content.current, card.current)
+            modalState.current = 'closed';
+        }
     }
 
 

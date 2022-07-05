@@ -75,13 +75,23 @@ export const Card = (props) => {
                 ref={card_content}
                 style={{ display: props.i === 0 ? props.firstSlide ? 'none' : 'block' : 'block', }}
             >
-                <div
-                    id='card_content_img'
-                    className={style.card_content_img}
-                    style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
-                    }}>
-                </div>
+                {props.data.backdrop_path ?
+                    <div
+                        id='card_content_img'
+                        className={style.card_content_img}
+                        style={{
+                            backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.data.backdrop_path})`,
+                        }}>
+                    </div>
+                    :
+                    <div
+                        id='card_content_img'
+                        className={style.card_content_img}
+                        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                        {props.data.title || props.data.name}
+                    </div>
+                }
+
 
                 <div
                     id='card_content_info'

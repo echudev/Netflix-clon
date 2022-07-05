@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Header } from './Header/Header'
 import { ButtonLeft } from './ButtonLeft/ButtonLeft';
 import { ButtonRight } from './ButtonRight/ButtonRight';

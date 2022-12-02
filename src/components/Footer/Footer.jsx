@@ -1,11 +1,11 @@
-import style from './Footer.module.css';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import style from './Footer.module.css'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import InstagramIcon from '@mui/icons-material/Instagram'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import YouTubeIcon from '@mui/icons-material/YouTube'
 
 export const Footer = () => {
-    return (
+  return (
         <div className={style.footer_content}>
             <div className={style.footer_social_links}>
                 <FacebookIcon className={style.icons}/>
@@ -31,5 +31,5 @@ export const Footer = () => {
             <div className={style.button} variant="outlined">Código de Servicio</div>
             <div className={style.footer_copyright}>© 1997-2022 Netflix, Inc.</div>
         </div>
-    )
+  )
 }

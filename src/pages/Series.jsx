@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
 export const Series = () => {
-
   const style = {
     backgroundColor: '#121212',
     color: '#fff',
@@ -10,12 +9,12 @@ export const Series = () => {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
-    width: '100%',
+    width: '100%'
   }
 
-  useEffect(() =>{
-    document.title= `Series — Netflix`;
- }, [])  
+  useEffect(() => {
+    document.title = 'Series — Netflix'
+  }, [])
 
   return (
     <div style={style}>

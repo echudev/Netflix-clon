@@ -1,18 +1,16 @@
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import CheckIcon from '@mui/icons-material/Check';
-import AddIcon from '@mui/icons-material/Add';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import ClearIcon from '@mui/icons-material/Clear';
-import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
-import styles from './CardButtons.module.css';
-import { style } from '@mui/system';
-
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import CheckIcon from '@mui/icons-material/Check'
+import AddIcon from '@mui/icons-material/Add'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import ClearIcon from '@mui/icons-material/Clear'
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism'
+import styles from './CardButtons.module.css'
+import { style } from '@mui/system'
 
 export const CardButtons = () => {
-
-    return (
+  return (
         <div className={styles.container}>
             <div className={styles.button}>
                 <PlayArrowIcon className={`${styles.icons} ${styles.play}`} />
@@ -31,5 +29,5 @@ export const CardButtons = () => {
                 <p className={styles.tooltip3}>Más información</p>
             </div>
         </div>
-    )
+  )
 }

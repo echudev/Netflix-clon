@@ -1,19 +1,19 @@
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import style from './TooltipMenu.module.css';
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import style from './TooltipMenu.module.css'
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 export const TooltipMenu = () => {
-    const [menuClassName, setMenuClassName] = useState(style.tooltip_menu);
+  const [menuClassName, setMenuClassName] = useState(style.tooltip_menu)
 
-    const handlerOpenMenu = () => {
-        setMenuClassName(style.tooltip_menu_open);
-    }
-    const handlerCloseMenu = () => {
-        setMenuClassName(style.tooltip_menu);
-    }
+  const handlerOpenMenu = () => {
+    setMenuClassName(style.tooltip_menu_open)
+  }
+  const handlerCloseMenu = () => {
+    setMenuClassName(style.tooltip_menu)
+  }
 
-    return (
+  return (
         <>
             <div
                 className={style.explorar}
@@ -34,5 +34,5 @@ export const TooltipMenu = () => {
                 <NavLink to="/milista" className={({ isActive }) => isActive ? style.navlink_active : style.navlink}>Mi lista</NavLink>
             </div>
         </>
-    )
+  )
 }

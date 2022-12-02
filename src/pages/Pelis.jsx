@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
 export const Pelis = () => {
-
   const style = {
     backgroundColor: '#121212',
     color: '#fff',
@@ -9,13 +8,12 @@ export const Pelis = () => {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height:'100vh',
-    width:'100%',
+    height: '100vh',
+    width: '100%'
   }
-  useEffect(() =>{
-    document.title= `Películas — Netflix`;
- }, [])  
-
+  useEffect(() => {
+    document.title = 'Películas — Netflix'
+  }, [])
 
   return (
     <div style={style}>

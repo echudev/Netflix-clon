@@ -1,10 +1,9 @@
-import style from './Banner.module.css';
-import { InfoButton } from './InfoButton/InfoButton';
-import { PlayButton } from './PlayButton/PlayButton';
+import style from './Banner.module.css'
+import { InfoButton } from './InfoButton/InfoButton'
+import { PlayButton } from './PlayButton/PlayButton'
 
 export const Banner = (props) => {
- 
-    return (<>
+  return (<>
         {props.loading && <div className={style.banner_loading}></div>}
         {props.data &&
             <div
@@ -21,8 +20,9 @@ export const Banner = (props) => {
                 </div> */}
                 <div className={style.content}>
                     <div>
-                        {props.logo ? <img className={style.logo} src={`https://image.tmdb.org/t/p/original/${props.logo}`} alt="logo" />
-                            : <h1 className={style.banner_content_text_h1}>{props.data.title}</h1>}
+                        {props.logo
+                          ? <img className={style.logo} src={`https://image.tmdb.org/t/p/original/${props.logo}`} alt="logo" />
+                          : <h1 className={style.banner_content_text_h1}>{props.data.title}</h1>}
                         <p className={style.banner_content_text_p}>{props.data.overview}</p>
                     </div>
                     <div className={style.buttons}>

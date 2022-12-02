@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
 export const MiLista = () => {
-
   const style = {
     backgroundColor: '#121212',
     color: '#fff',
@@ -10,13 +9,13 @@ export const MiLista = () => {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
-    width: '100%',
+    width: '100%'
   }
 
-  useEffect(() =>{
-    document.title= `Netflix`;
- }, []) 
- 
+  useEffect(() => {
+    document.title = 'Netflix'
+  }, [])
+
   return (
     <div style={style}>
       <h1>Mi Lista</h1>

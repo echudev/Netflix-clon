@@ -9,8 +9,8 @@ import { Menu } from './Menu/Menu'
 import { Logo } from './Logo/Logo'
 
 export const NavBar = () => {
-  const width = useGetWindowWidth();
-  const scrollY = useGetScrollY();
+  const width = useGetWindowWidth()
+  const scrollY = useGetScrollY()
 
   return (
     <div className={style.navbar}>

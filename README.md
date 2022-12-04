@@ -9,7 +9,9 @@
 
 ## Overview
 
-Clon de la webapp Netflix como desafío del bootcamp "Codo a Codo" fullstack React/Go.
+Clon de la webapp Netflix como desafío del bootcamp "Codo a Codo" fullstack MERN.
+En este proyecto me enfoqué en mejorar mis habilidades manipulando el DOM.
+Todos los componentes y animaciones fueron creadas sin ayuda de ninguna librería externa.
 Los datos los consulto de la API pública "TMDB" (The Movie Database).
 Hosteado en Vercel
 
@@ -27,7 +29,8 @@ Hosteado en Vercel
 
 - React.js 
 - Axios
+- Custom Hooks
 - React Router v6
-- CSS Vanilla
-- MUI (íconos)
+- CSS Modules
+- React-intersection-observer (package)
 - API: https://www.themoviedb.org/

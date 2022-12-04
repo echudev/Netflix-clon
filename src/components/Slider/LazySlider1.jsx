@@ -1,14 +1,17 @@
 import { lazy, Suspense } from 'react'
-import { useNearScreen } from '../../hooks/useNearScreen'
+import { useInView } from 'react-intersection-observer'
+import LoadingSlider from './LoadingSlider'
 const Slider1 = lazy(() => import('./Slider1'))
 
 const LazySlider1 = () => {
-  const { isNearScreen, fromRef } = useNearScreen()
+  const { ref, inView } = useInView({
+    triggerOnce: true
+  })
 
   return (
-    <Suspense fallback={<span>Loading...</span>}>
-      <div ref={fromRef}>
-        {isNearScreen ? <Slider1 /> : null}
+    <Suspense fallback={<LoadingSlider />}>
+      <div ref={ref}>
+        {inView ? <Slider1 /> : <LoadingSlider />}
       </div>
     </Suspense>
   )

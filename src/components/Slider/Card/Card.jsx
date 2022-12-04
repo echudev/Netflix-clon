@@ -45,7 +45,7 @@ export const Card = (props) => {
         props.setBtnOpacity(0) // oculto botones slider
         modalState.current = 'open'
       }
-    }, 500)// tiempo que debe permanecer mouse sobre card para que abra el modal
+    }, 700)// tiempo que debe permanecer mouse sobre card para que abra el modal
   }
 
   // ocultar modal

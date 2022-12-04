@@ -9,7 +9,6 @@ export const useNearScreen = () => {
     const onChange = (entries, observer) => {
     // entries es un array
       const el = entries[0]
-      console.log(el)
       if (el.isIntersecting) {
         // hago visible el elemento observado
         setShow(true)

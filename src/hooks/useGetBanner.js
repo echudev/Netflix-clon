@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { generateRandom } from '.././utils/generateRandom'
 import axios from 'axios'
 
-export const useGetBanner = (type, collection, lang, page) => {
+export const useGetBanner = ({ type, collection, lang, page }) => {
   const i = generateRandom(0, 19) // que va a seleccionar entre los 20 items del array collection al azar
   const [data, setData] = useState({ // almaceno el item seleccionado en data
     loading: true,

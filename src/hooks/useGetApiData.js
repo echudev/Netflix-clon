@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export const useGetApiData = (type, collection, lang, page) => {
+export const useGetApiData = ({ type, collection = null, sortBy, genre, lang, page }) => {
   const [data, setData] = useState({
     loading: true,
     error: null,
@@ -11,7 +11,9 @@ export const useGetApiData = (type, collection, lang, page) => {
 
   const baseURL = 'https://api.themoviedb.org/3'
   const key = '5bb03364720dd995704773221faeb9ba'
-  const url = `${baseURL}/${type}/${collection}?api_key=${key}&language=${lang}&page=${page}`
+  const url = collection != null
+    ? `${baseURL}/${type}/${collection}?api_key=${key}&language=${lang}&page=${page}`
+    : `${baseURL}/discover/${type}?api_key=${key}&sort_by=${sortBy}&with_genres=${genre}&language=${lang}&page=${page}&vote_count.gte=50`
 
   const getData = async (url) => {
     try {

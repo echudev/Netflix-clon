@@ -12,9 +12,10 @@ import { Footer } from '../components/Footer/Footer'
 function AppRoutes () {
   return (
     <BrowserRouter>
-    <NavBar />
+      <NavBar />
       <Routes>
-        <Route path="/" element={<Inicio />} />
+        <Route path='/*' element={<Inicio />} />
+        <Route path="/inicio" element={<Inicio />} />
         <Route path="/series" element={<Series />} title={'series'} />
         <Route path="/peliculas" element={<Pelis />} />
         <Route path="/novedades" element={<Novedades />} />

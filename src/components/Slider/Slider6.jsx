@@ -1,16 +1,20 @@
 import { useRef, useState } from 'react'
+import { useGetApiData } from '../../hooks/useGetApiData'
 import { Header } from './Header/Header'
 import { ButtonLeft } from './ButtonLeft/ButtonLeft'
 import { ButtonRight } from './ButtonRight/ButtonRight'
 import { Card } from './Card/Card'
-import { useGetSliderConfig } from './hooks/useGetSliderConfig.js'
+import { useGetSliderConfig } from '../../hooks/useGetSliderConfig.js'
 import style from './Slider.module.css'
 
-export const Slider = (props) => {
+const Slider6 = () => {
+  const titulo = 'Románticas'
+  const query = { type: 'movie', genre: '10749', sortBy: 'vote_average.desc', lang: 'en', page: 1 }
+  const data = useGetApiData(query)
+  const slider = useRef(null)
   const fakeArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   const [sliderTransition, setSliderTransition] = useState(false)
   const [firstSlide, setFirstSlide] = useState(true)
-  const slider = useRef(null)
   const [btnOpacity, setBtnOpacity] = useState(0)
   const [cardsToShow, cardWidth, cardHeight, btnWidth] = useGetSliderConfig()
 
@@ -60,7 +64,7 @@ export const Slider = (props) => {
 
   return (
     <div className={style.slider_container} >
-      <Header titulo={props.titulo} />
+      <Header titulo={titulo} />
       <ButtonLeft
         height={cardHeight}
         width={btnWidth}
@@ -81,12 +85,12 @@ export const Slider = (props) => {
         onMouseEnter={() => { setBtnOpacity(1) }}
         onMouseLeave={() => { setBtnOpacity(0) }}
       >
-        {props.data.loading && fakeArray.map((data, i) => {
+        {data.loading && fakeArray.map((data, i) => {
           return (<Card
             data={data} key={i}
             width={cardWidth} height={cardHeight} />)
         })}
-        {props.data.collection && props.data.collection.results.map((data, i) => {
+        {data.collection && data.collection.results.map((data, i) => {
           return (<Card
             data={data}
             key={data.id} i={i}
@@ -98,3 +102,5 @@ export const Slider = (props) => {
     </div>
   )
 }
+
+export default Slider6

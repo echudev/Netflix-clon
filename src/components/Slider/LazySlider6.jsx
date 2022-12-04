@@ -8,7 +8,7 @@ const LazySlider6 = () => {
     triggerOnce: true,
     rootMargin: '80px'
   })
-  console.log('slider 6 inview ', inView)
+
   return (
         <Suspense fallback={<LoadingSlider />}>
             <div ref={ref}>

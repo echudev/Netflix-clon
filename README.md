@@ -29,8 +29,6 @@ Hosteado en Vercel
 
 - React.js 
 - Axios
-- Custom Hooks
 - React Router v6
 - CSS Modules
-- React-intersection-observer (package)
 - API: https://www.themoviedb.org/
